@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.home.cadastrarUser');
+        return view('user.home.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.forms.create-edit-user');
     }
 
     /**

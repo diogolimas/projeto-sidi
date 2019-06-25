@@ -14,4 +14,4 @@
 
 
 Route::resource('/', 'User\UserController');
-
+Route::get('/user/create','User\UserController@create');
