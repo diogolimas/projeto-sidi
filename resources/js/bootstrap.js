@@ -10,7 +10,6 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
-    require('semantic-ui/dist/semantic.min');
 } catch (e) {}
 
 /**
@@ -53,3 +52,4 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+require("../dist/semantic/semantic.css");

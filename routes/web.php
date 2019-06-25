@@ -13,4 +13,5 @@
 
 
 
-Route::resource('/', 'UserController');
+Route::resource('/', 'User\UserController');
+
