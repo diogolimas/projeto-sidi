@@ -53,3 +53,5 @@ if (token) {
 //     encrypted: true
 // });
 require("../dist/semantic/semantic.css");
+require("../dist/semantic/semantic.js");
+

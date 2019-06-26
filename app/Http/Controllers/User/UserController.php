@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.home.index');
+        $title = "Sistema de Avaliação - página principal";
+        return view('user.home.index', compact('title'));
     }
 
     /**
@@ -23,8 +24,11 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
-        return view('user.forms.create-edit-user');
+        $title = "Formulário de cadastro";
+        $titulo_page = 'Cadastrar usuário';
+        return view('user.forms.create-edit-user', compact('titulo_page', 'title'));
     }
 
     /**

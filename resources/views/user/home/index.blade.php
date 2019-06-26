@@ -19,10 +19,12 @@ s
         <div id="custom" class="ui grid container">
             <div class="row">
                 <div class="four wide column">
-                    <div class="ui teal labeled icon button">
-                        <a class="link" href="{{url('/user/create')}}"><i class="add icon "></i> Cadastrar usuário</a>
-
-                    </div>
+                    <a class="link" href="{{url('/user/create')}}">
+                        <div class="ui teal labeled icon button">
+                            <i class="add icon "></i>
+                            Cadastrar usuário
+                        </div>
+                    </a>
                 </div>
                 <div class="eight wide column">
 

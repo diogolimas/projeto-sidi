@@ -8,7 +8,7 @@
             <a href="{{url('/   ')}}">
                 <i class="arrow left icon black"></i>
             </a>
-            Cadastrar usuário
+            {{$titulo_page ?? 'Cadastrar de usuário'}}
         </h1>
         <form class="ui form" method="put" action="{{''}}">
             <div class="field">
@@ -16,8 +16,8 @@
                 <input type="text" name="nome" placeholder="Nome:">
             </div>
             <div class="field">
-                <label>CPF</label>
-                <input type="text" name="cpf" placeholder="cpf">
+                <label>Email</label>
+                <input type="text" name="cpf" placeholder="Email">
             </div>
             <div class="field">
                 <label>Login</label>
@@ -28,26 +28,26 @@
                 <input type="password" name="senha" placeholder="Senha">
             </div>
             <div class="field">
-                <label>Senha:</label>
-                <input type="password" name="senha" placeholder="Senha">
-            </div>
-
-            <div class="field">
                 <label>Papel:</label>
-                <input type="text" name="papel" placeholder="Papel">
+                <select class="ui fluid dropdown" name="nome_papel">
+                    <option value=""> - Selecione o papel do usuário - </option>
+                    <option value="professor"> Professor </option>
+                    <option value="aluno"> Aluno </option>
+                    <option value="Administrador">Administrador</option>
+                </select>
             </div>
             <div class="field">
                 <label>Descrição do papel:</label>
-                <textarea rows="2" name="descricao"></textarea>
+                <textarea rows="2" name="descricao_papel"></textarea>
             </div>
             <div class="field">
-                <label>Tipo de permissão:</label>
-                <select class="ui fluid dropdown">
-                    <option value=""> - Selecione a permissão - </option>
-                    <option value="1"> Professor </option>
-                    <option value="2"> Aluno </option>
-                </select>
+            <h3 class="block">Permissões</h3>
+                <input class="inline" type="checkbox" name="cadastrar_usuario" id="cad"><label for="cad" class="inline">Cadastro de usuários</label>
+                <input type="checkbox" name="edit_delete_usuario" id=""><label for="cad" class="inline">Ediçao e deleção de usuários</label>
+                <input type="checkbox" name="cadastrar_avaliacao" id=""><label for="cad" class="inline">Cadastro de avaliações</label>
+                <input type="checkbox" name="edit_delete_avaliacao" id=""><label for="cad" class="inline">Edição e deleção de avaliações</label>
             </div>
+
 
 
             <button class="ui button" type="submit">Submit</button>
