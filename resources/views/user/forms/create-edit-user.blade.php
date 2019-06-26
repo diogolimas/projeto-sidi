@@ -10,7 +10,7 @@
             </a>
             {{$titulo_page ?? 'Cadastrar de usuário'}}
         </h1>
-        <form class="ui form" method="put" action="{{''}}">
+        <form class="ui form" method="POST" action="{{ route('register') }}">
             <div class="field">
                 <label>Nome</label>
                 <input type="text" name="nome" placeholder="Nome:">
@@ -50,7 +50,7 @@
 
 
 
-            <button class="ui button" type="submit">Submit</button>
+            <button class="ui teal button" type="submit">{{$action_buttons ?? 'Cadastrar'}}</button>
         </form>
     </div>
 @endsection

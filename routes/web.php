@@ -11,7 +11,13 @@
 |
 */
 
+Auth::routes();
 
+Route::group( ['middleware' => 'auth'], function()
+{
 
-Route::resource('/', 'User\UserController');
-Route::get('/user/create','User\UserController@create');
+    Route::resource('/', 'User\UserController');
+    Route::get('/user/create','User\UserController@create');
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+

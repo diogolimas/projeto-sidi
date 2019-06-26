@@ -74,7 +74,7 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
-            'schema' => 'sistema-academico',
+            'schema' => 'sistema_avaliacao',
             'sslmode' => 'prefer',
         ],
 

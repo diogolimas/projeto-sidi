@@ -26,9 +26,10 @@ class UserController extends Controller
     public function create()
 
     {
+        $aciont_button = 'Cadastrar';
         $title = "Formulário de cadastro";
         $titulo_page = 'Cadastrar usuário';
-        return view('user.forms.create-edit-user', compact('titulo_page', 'title'));
+        return view('user.forms.create-edit-user', compact('titulo_page', 'title', 'aciont_button'));
     }
 
     /**
