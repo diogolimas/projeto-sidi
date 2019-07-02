@@ -15,6 +15,11 @@ class CreatePermissaoTable extends Migration
     {
         Schema::create('permissao', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->boolean('cadastrar_usuario')->nullable();
+            $table->boolean('cadastrar_avaliacao')->nullable();
+            $table->boolean('cadastrar_indicador')->nullable();
+            $table->boolean('edit_delete_usuario')->nullable();
+            $table->boolean('edit_delete_avaliacao')->nullable();
             $table->timestamps();
         });
     }

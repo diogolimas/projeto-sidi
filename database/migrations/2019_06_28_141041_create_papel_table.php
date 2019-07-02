@@ -15,6 +15,8 @@ class CreatePapelTable extends Migration
     {
         Schema::create('papel', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text('descricao', 200);
+            $table->string('nome', 45);
             $table->timestamps();
         });
     }
