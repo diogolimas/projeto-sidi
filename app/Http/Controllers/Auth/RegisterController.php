@@ -24,17 +24,6 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Show the application registration form.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showRegistrationForm()
-    {
-        $region=Region::all();
-        return view('auth.register', compact('region'));
-    }
-
-    /**
      * Where to redirect users after registration.
      *
      * @var string

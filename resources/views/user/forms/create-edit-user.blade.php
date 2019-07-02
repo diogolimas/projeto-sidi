@@ -42,10 +42,10 @@
             </div>
             <div class="field">
             <h3 class="block">Permissões</h3>
-                <input class="inline" type="checkbox" name="cadastrar_usuario" id="cad"><label for="cad" class="inline">Cadastro de usuários</label>
-                <input type="checkbox" name="edit_delete_usuario" id=""><label for="cad" class="inline">Ediçao e deleção de usuários</label>
-                <input type="checkbox" name="cadastrar_avaliacao" id=""><label for="cad" class="inline">Cadastro de avaliações</label>
-                <input type="checkbox" name="edit_delete_avaliacao" id=""><label for="cad" class="inline">Edição e deleção de avaliações</label>
+                <label for="cad" class="inline">Cadastro de usuários</label><input type="checkbox" name="cadastrar_usuario" id="cad">
+                <label for="edit" class="inline">Ediçao e deleção de usuários</label><input type="checkbox" name="edit_delete_usuario" id="edit">
+                <label for="cad2" class="inline">Cadastro de avaliações</label><input type="checkbox" name="cadastrar_avaliacao" id="cad2">
+                <label for="edit2" class="inline">Edição e deleção de avaliações</label><input type="checkbox" name="edit_delete_avaliacao" id="edit2">
             </div>
 
 
