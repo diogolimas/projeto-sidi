@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAlunoTable extends Migration
+class CreateIndicadorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateAlunoTable extends Migration
      */
     public function up()
     {
-        Schema::create('aluno', function (Blueprint $table) {
+        Schema::create('indicadors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('periodo', 45);
-            $table->integer('quantidade_disciplinas_cursando')->nullable();
+            $table->string('descricao_indicador', 80);
+            $table->string('resposta', 150)->nullable();
+            $table->boolean('situacao')->nullable();
+            $table->float('nota')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateAlunoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aluno');
+        Schema::dropIfExists('indicadors');
     }
 }

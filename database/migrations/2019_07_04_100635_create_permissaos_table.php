@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePermissaoTable extends Migration
+class CreatePermissaosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePermissaoTable extends Migration
      */
     public function up()
     {
-        Schema::create('permissao', function (Blueprint $table) {
+        Schema::create('permissaos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->boolean('cadastrar_usuario')->nullable();
             $table->boolean('cadastrar_avaliacao')->nullable();
@@ -31,6 +31,6 @@ class CreatePermissaoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permissao');
+        Schema::dropIfExists('permissaos');
     }
 }

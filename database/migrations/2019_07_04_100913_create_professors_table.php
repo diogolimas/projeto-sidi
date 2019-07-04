@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePapelTable extends Migration
+class CreateProfessorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreatePapelTable extends Migration
      */
     public function up()
     {
-        Schema::create('papel', function (Blueprint $table) {
+        Schema::create('professors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('descricao', 200);
-            $table->string('nome', 45);
+            $table->integer('quantidade_disciplinas_ministrando')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreatePapelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('papel');
+        Schema::dropIfExists('professors');
     }
 }

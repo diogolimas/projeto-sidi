@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIndicadorTable extends Migration
+class CreatePapelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateIndicadorTable extends Migration
      */
     public function up()
     {
-        Schema::create('indicador', function (Blueprint $table) {
+        Schema::create('papels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('descricao_indicador', 80);
-            $table->string('resposta', 150)->nullable();
-            $table->boolean('situacao')->nullable();
-            $table->float('nota')->nullable();
+            $table->text('descricao', 200);
+            $table->string('nome', 45);
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateIndicadorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('indicador');
+        Schema::dropIfExists('papels');
     }
 }

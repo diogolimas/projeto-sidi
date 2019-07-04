@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAvaliacaoTable extends Migration
+class CreateTurmasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateAvaliacaoTable extends Migration
      */
     public function up()
     {
-        Schema::create('avaliacao', function (Blueprint $table) {
+        Schema::create('turmas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome', 60);
-            $table->string('descricao', 45);
+            $table->string('disciplina', 60);
+            $table->string('codigo', 10);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateAvaliacaoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('avaliacao');
+        Schema::dropIfExists('turmas');
     }
 }
