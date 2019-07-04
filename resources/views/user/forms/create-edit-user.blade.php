@@ -12,12 +12,24 @@
         </h1>
         <form class="ui form" method="POST" action="{{ route('register') }}">
             <div class="field">
-                <label>Nome</label>
-                <input type="text" name="nome" placeholder="Nome:">
+                <label form="name" >Nome</label>
+                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="field">
                 <label>Email</label>
-                <input type="text" name="cpf" placeholder="Email">
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="field">
                 <label>Login</label>
