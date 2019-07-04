@@ -19,11 +19,11 @@ class PapelsTableSeeder extends Seeder
         ]);
         Papel::create([
             'permissao_id' => '2',
-            'descricao' => 'Pode criar turmas e avaliações',
+            'descricao' => 'Pode fazer o que quiser',
             'nome' => 'Professor',
         ]);
         Papel::create([
-            'permissao_id' => '3',
+            'permissao_id' => '2',
             'descricao' => 'Pode fazer o que quiser',
             'nome' => 'Administrador',
         ]);
