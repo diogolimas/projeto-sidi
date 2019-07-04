@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreatePermissaosTable extends Migration
 {
     /**
@@ -20,10 +18,10 @@ class CreatePermissaosTable extends Migration
             $table->boolean('cadastrar_indicador')->nullable();
             $table->boolean('edit_delete_usuario')->nullable();
             $table->boolean('edit_delete_avaliacao')->nullable();
+            $table->boolean('edit_delete_indicador')->nullable();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
