@@ -4,4 +4,4 @@
 ### O que é o sistema SIDI?
     -   Tem o intuito de medir o nível da aprendizagem de alunos mediante a indicadores 
         propostos pelo professor/avaliador;
-    -   Avaliar de maneira mais profunda alunos;
+    -   Avaliar alunos de maneira mais profunda ;
