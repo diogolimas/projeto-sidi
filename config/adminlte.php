@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => '',
 
     'title_prefix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Projeto</b>SIDI',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<b>SIDI</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'blue',
+    'skin' => 'yellow',
 
     /*
     |--------------------------------------------------------------------------
@@ -85,7 +85,7 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/',
 
     'logout_url' => 'logout',
 
@@ -110,8 +110,8 @@ return [
     'menu' => [
         'MAIN NAVIGATION',
         [
-            'text' => 'Home',
-            'url'  => 'admin/blog',
+            'text' => 'Página Inicial',
+            'url'  => '/',
             
             'icon'        => 'home',
         ],
