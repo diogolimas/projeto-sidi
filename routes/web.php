@@ -13,5 +13,10 @@
 //Route::get('/','Admin\AdminController@index')->name('admin');
 Auth::routes();
 Route::group( ['middleware' => 'auth'], function(){
+    Route::resource('/registrar', 'registroController');
     Route::get('/', 'Admin\AdminController@index')->name('home');
+    Route::get('/registrar', 'registroController@index')->name('registrar');
+    Route::post('/registrar/usuario/efetuar', 'registroController@store')->name('efetuarRegistro');
 });
+
+Route::get('/home', 'HomeController@index')->name('home');

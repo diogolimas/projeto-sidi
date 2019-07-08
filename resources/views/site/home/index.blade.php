@@ -3,9 +3,9 @@
 @section('title', 'AdminLTE')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>Sistema Avaliativo de Disciplinas</h1>
 @stop
 
 @section('content')
-    <p>You are logged in!</p>
+    <a href="{{route('registrar')}}">Registrar Novo Usuário</a>
 @stop

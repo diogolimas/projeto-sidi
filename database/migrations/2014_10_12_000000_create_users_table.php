@@ -21,6 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->bigInteger('id_aluno')->nullable();
+            $table->bigInteger('id_professor')->nullable();
+            $table->bigInteger('id_administrador')->nullable();
         });
     }
 
