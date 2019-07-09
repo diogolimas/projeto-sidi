@@ -47,6 +47,7 @@
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/semantic.min.js')}}"></script>
 
 @if(config('adminlte.plugins.select2'))
     <!-- Select2 -->

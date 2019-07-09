@@ -68,9 +68,20 @@
                                         </span>
                                 @endif
                             </div>
+                         
+                                <div class="field mb-3  ">
+                                <select name="" id="" class="ui selection dropdown ">
+                                    <option value="" selected>Selecione o tipo de usuário</option>
+                                    <option value="">Professor</option>
+                                    <option value="">Aluno</option>
+                                    <option value="">Administrador</option>
+                                </select>
+                                </div>  
+                            
                             <button type="submit"
                                     class="ui inverted orange button btn-lg btn-block" 
                             >{{ trans('adminlte::adminlte.register') }}</button>
+                            
                         </form>
                     </div>
                     <!--fim do formulário centralizado-->
@@ -80,7 +91,7 @@
                 </div>
                 <!--fim da row-->
             </div>
-
+            
 
     </div>
 @stop

@@ -12,7 +12,7 @@ try {
 
     require('bootstrap'),
     require('semantic-ui-css/semantic.min');
-    
+
 } catch (e) {}
 
 /**
