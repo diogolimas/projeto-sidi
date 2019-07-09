@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Papel;
 use App\Models\Permissao;
-use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class registroController extends Controller
+class AlunoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class registroController extends Controller
      */
     public function index()
     {
-        return view('site.home.registrarAdmin');
+        return view('site.home.registrarAluno');
     }
 
     /**
@@ -49,7 +49,8 @@ class registroController extends Controller
                         'name' => $request->name,
                         'email' => $request->email,
                         'password' => Hash::make($request->password),
-                        'papel_id' => '3',
+                        'periodo' => $request->periodo,
+                        'papel_id' => '1',
                         'criador_id' => auth()->user()->id,
                     ]);
                     return view('site.home.index');

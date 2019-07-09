@@ -15,7 +15,7 @@
             <h2 class="ui right floated header">Gerenciamento de usuários</h2>
             <div class="ui clearing divider"></div>
             <p>
-                <a class="ui inverted orange button text-black" href="">Todos os usuários</a>
+                <a class="ui inverted orange button text-black" href="{{route('listarUser')}}">Todos os usuários</a>
                 <a class="ui inverted orange button text-black"  href="{{route('registrar')}}">Registrar Novo Usuário</a>
             
             </p>

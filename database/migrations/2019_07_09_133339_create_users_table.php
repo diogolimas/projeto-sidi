@@ -15,15 +15,20 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('papel_id')->nullable();
+            $table->unsignedBigInteger('criador_id')->nullable();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('periodo', 45)->nullable();
+            $table->integer('quantidade_disciplinas_cursando')->default(0);
+            $table->integer('quantidade_disciplinas_ministrando')->default(0);
+            $table->foreign('papel_id')->references('id')->on('papels')->onDelete('cascade');
+            $table->foreign('criador_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->rememberToken();
             $table->timestamps();
-            $table->bigInteger('id_aluno')->nullable();
-            $table->bigInteger('id_professor')->nullable();
-            $table->bigInteger('id_administrador')->nullable();
         });
     }
 
