@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<b>Projeto</b>SIDI',
+    'logo' => '<b>Projeto </b>SIDI',
 
     'logo_mini' => '<b>SIDI</b>',
 
@@ -113,7 +113,7 @@ return [
             'text' => 'Página Inicial',
             'url'  => '/',
             
-            'icon'        => 'home',
+            'icon'   => 'home',
         ],
 
             

@@ -54,6 +54,9 @@
                 </a>
             @endif
                 <!-- Navbar Right Menu -->
+                <div class="mr-auto">
+
+                </div>
                 <div class="navbar-custom-menu">
 
                     <ul class="nav navbar-nav">
