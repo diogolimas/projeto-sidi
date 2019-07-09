@@ -108,7 +108,7 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        'Menu de navegação',
         [
             'text' => 'Página Inicial',
             'url'  => '/',

@@ -15,7 +15,7 @@ class CreateAlunosTable extends Migration
     {
         Schema::create('alunos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('periodo', 45);
+            $table->string('periodo', 45)->default('1');
             $table->integer('quantidade_disciplinas_cursando')->nullable();
             $table->timestamps();
         });
