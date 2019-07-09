@@ -7,5 +7,5 @@
 @stop
 
 @section('content')
-    <a class="ui inverted yellow button text-black"  href="{{route('registrar')}}">Registrar Novo Usuário</a>
+    <a class="ui inverted orange button text-black"  href="{{route('registrar')}}">Registrar Novo Usuário</a>
 @stop

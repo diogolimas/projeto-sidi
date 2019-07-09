@@ -3,7 +3,7 @@
 @section('title', 'Sidi - Registrar usuário')
 
 @section('content_header')
-    <h1>Cadastro De Usuário</h1>
+    <h1>Cadastro de usuário</h1>
 @stop
 
 @section('content')
@@ -18,26 +18,27 @@
                     </div>
 
                     <div class="ten wide column">
-                    <h2 class="ui right floated header">  <a href="{{url('/')}}">
+                    <div class="d-block mb-4">
+                    <h2 class="ui header ">  <a href="{{url('/')}}">
                         <i class="arrow left icon black"></i>
                     </a>
                     {{$titulo_page ?? 'Registrar Novo Usuário'}}
                     </h2>
-                    
-                        <form action="{{ route('efetuarRegistro') }}" method="post">
+                    </div>
+                        <form class="" action="{{ route('efetuarRegistro') }}" method="post">
                             {!! csrf_field() !!}
                             
-                            <div class="ui input focus {{ $errors->has('name') ? 'has-error' : '' }}">
+                            <div class="ui input mb-2 has-feedback {{ $errors->has('name') ? 'has-error' : '' }} d-block ">
                                 <input type="text" name="name" class="form-control" value="{{ old('name') }}"
                                     placeholder="{{ trans('adminlte::adminlte.full_name') }}">
-                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                <i class="glyphicon glyphicon-user form-control-feedback"></i>
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                             <strong>{{ $errors->first('name') }}</strong>
                                         </span>
                                 @endif
                             </div>
-                            <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
+                            <div class="ui input d-block mb-2 has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
                                 <input type="email" name="email" class="form-control" value="{{ old('email') }}"
                                     placeholder="{{ trans('adminlte::adminlte.email') }}">
                                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -47,7 +48,7 @@
                                         </span>
                                 @endif
                             </div>
-                            <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
+                            <div class="ui input d-block mb-2 has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
                                 <input type="password" name="password" class="form-control"
                                     placeholder="{{ trans('adminlte::adminlte.password') }}">
                                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
@@ -57,7 +58,7 @@
                                         </span>
                                 @endif
                             </div>
-                            <div class="form-group has-feedback {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
+                            <div class="ui input d-block mb-2 has-feedback {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
                                 <input type="password" name="password_confirmation" class="form-control"
                                     placeholder="{{ trans('adminlte::adminlte.retype_password') }}">
                                 <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
@@ -68,7 +69,7 @@
                                 @endif
                             </div>
                             <button type="submit"
-                                    class="btn btn-primary btn-block btn-flat"
+                                    class="ui inverted orange button btn-lg btn-block" 
                             >{{ trans('adminlte::adminlte.register') }}</button>
                         </form>
                     </div>
