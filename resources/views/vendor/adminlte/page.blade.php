@@ -135,6 +135,15 @@
 
 @section('adminlte_js')
     <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
+    <script>  
+        //javascript para o registrar turmas
+            $(function() {
+                $('#listagem-usuarios').hide(); 
+                $('.click').click(function(){
+                    $('#listagem-usuarios').show();
+                });
+            });
+            </script>
     @stack('js')
     @yield('js')
 @stop

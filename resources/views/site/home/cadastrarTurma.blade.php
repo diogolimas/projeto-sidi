@@ -19,7 +19,7 @@
 
                     <div class="ten wide column">
                     <div class="d-block mb-4">
-                    <h2 class="ui header ">  <a href="{{url('/registrar')}}">
+                    <h2 class="ui header ">  <a href="{{route('home')}}">
                         <i class="arrow left icon black"></i>
                     </a>
                     {{$titulo_page ?? 'Registrar nova turma'}}
@@ -39,8 +39,8 @@
                             </div>
                             <div>
 
-                                <label class="click" for="">Listagem de usuários para adicionar </label>
-                                <i class="fas fa-sort-down"></i>
+                                <label title="Clique para mostrar" class="click" for="">Listagem de usuários para adicionar </label>
+                                <i class="click"  class="fas fa-sort-down"></i>
                                 <div id="listagem-usuarios">
                                     @foreach ($usersthis as $users)
                                         <input type="checkbox" name="user" id="us" value="{{$users->id}}" >
@@ -48,11 +48,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <script>
-                            $(function(){
-                                $('#listagem-usuarios').hide();
-                            });
-                            </script>
+
                             <button type="submit" class="ui inverted orange button btn-lg btn-block">
                             Cadastrar
                             </button>
