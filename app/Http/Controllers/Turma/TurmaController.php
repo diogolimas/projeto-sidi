@@ -19,8 +19,7 @@ class TurmaController extends Controller
     {
         
         $usersthis = User::where('criador_id', auth()->user()->id)->get();
-        
-        
+
         return view('site.home.cadastrarTurma', compact('usersthis'));
         
 
