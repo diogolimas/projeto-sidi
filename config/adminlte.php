@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => '',
+    'title' => 'SIDI - Sistema Avaliativo de Disciplinas',
 
     'title_prefix' => '',
 
@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<b>Projeto </b>SIDI',
+    'logo' => '<b>   </b>SIDI',
 
     'logo_mini' => '<b>SIDI</b>',
 

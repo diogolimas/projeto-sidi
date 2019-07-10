@@ -47,6 +47,8 @@
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="https://kit.fontawesome.com/655272e9b6.js"></script>
+
 <script src="{{ asset('js/semantic.min.js')}}"></script>
 
 @if(config('adminlte.plugins.select2'))

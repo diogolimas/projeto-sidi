@@ -26,7 +26,7 @@
             <div class="ui clearing divider"></div>
             <p>
                 <a class="ui inverted orange button text-black" href="">Todas as turmas</a>
-                <a class="ui inverted orange button text-black" href="">Cadastrar turma</a>
+                <a class="ui inverted orange button text-black" href="{{route('turmas/registrar')}}">Cadastrar turma</a>
                 <a class="ui inverted orange button text-black" href="">Editar características de turma</a>
                 
             </p>

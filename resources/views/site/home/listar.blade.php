@@ -3,7 +3,8 @@
 @section('title', 'Sistema Avalitivo de Aprendizagem')
 
 @section('content_header')
-    <h1>Listagem De Usuários Que Você Cadastrou</h1>
+    <h1>Listagem de usuários</h1>
+    <p>Aqui apenas aparece os usuários criados por você</p>
 @stop
 
 @section('content')

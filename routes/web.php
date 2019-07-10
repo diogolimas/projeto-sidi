@@ -19,6 +19,10 @@ Route::group( ['middleware' => 'auth'], function(){
     Route::get('/', 'Admin\AdminController@index')->name('home');
     Route::get('/usuarios', 'HomeController@listarUsuario')->name('listarUser');
 
+    //referente a turmas
+    Route::get('/registrar-turmas', 'Turma\TurmaController@index')->name('turmas/registrar');
+    Route::post('/registrar-turmas', 'Turma\TurmaController@create')->name('turmas/registrar');
+
 
     Route::get('/registrar', 'HomeController@registro')->name('registrar');
 

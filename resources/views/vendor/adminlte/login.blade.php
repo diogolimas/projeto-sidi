@@ -3,62 +3,7 @@
 @section('adminlte_css')
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/iCheck/square/blue.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/auth.css') }}">
-
-  <style type="text/css">
-    body {
-      background-color: #DADADA;
-    }
-    body > .grid {
-      height: 100%;
-    }
-    .image {
-      margin-top: -100px;
-    }
-    .column {
-      max-width: 450px;
-    }
-  </style>
-  <script>
-  $(document)
-    .ready(function() {
-      $('.ui.form')
-        .form({
-          fields: {
-            email: {
-              identifier  : 'email',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your e-mail'
-                },
-                {
-                  type   : 'email',
-                  prompt : 'Please enter a valid e-mail'
-                }
-              ]
-            },
-            password: {
-              identifier  : 'password',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your password'
-                },
-                {
-                  type   : 'length[6]',
-                  prompt : 'Your password must be at least 6 characters'
-                }
-              ]
-            }
-          }
-        })
-      ;
-    })
-  ;
-  </script>
-
-
-
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @yield('css')
 @stop
 
@@ -75,7 +20,7 @@
             <form action="{{ url(config('adminlte.login_url', 'login')) }}" method="post">
                 {!! csrf_field() !!}
 
-                <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
+                <div class="ui input d-block mb-2 has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
                     <input type="email" name="email" class="form-control" value="{{ old('email') }}"
                            placeholder="{{ trans('adminlte::adminlte.email') }}">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -85,7 +30,7 @@
                         </span>
                     @endif
                 </div>
-                <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
+                <div class="ui input d-block mb-2 has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
                     <input type="password" name="password" class="form-control"
                            placeholder="{{ trans('adminlte::adminlte.password') }}">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
@@ -105,10 +50,17 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-4">
-                        <button type="submit"
-                                class="btn btn-primary btn-block btn-flat">{{ trans('adminlte::adminlte.sign_in') }}</button>
+                    
                     </div>
                     <!-- /.col -->
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                      <button type="submit"
+                      class="fluid ui inverted orange button">{{ trans('adminlte::adminlte.sign_in') }}
+                    </button>
+                    </div>
+                    
                 </div>
             </form>
             <div class="auth-links">
@@ -121,40 +73,6 @@
         <!-- /.login-box-body -->
     </div><!-- /.login-box -->
 
-    <div class="ui middle aligned center aligned grid">
-            <div class="column">
-              <h2 class="ui teal image header">
-                <img src="" class="image">
-                <div class="content">
-                  Log-in to your account
-                </div>
-              </h2>
-              <form class="ui large form">
-                <div class="ui stacked segment">
-                  <div class="field">
-                    <div class="ui left icon input">
-                      <i class="user icon"></i>
-                      <input type="text" name="email" placeholder="E-mail address">
-                    </div>
-                  </div>
-                  <div class="field">
-                    <div class="ui left icon input">
-                      <i class="lock icon"></i>
-                      <input type="password" name="password" placeholder="Password">
-                    </div>
-                  </div>
-                  <div class="ui fluid large teal submit button">Login</div>
-                </div>
-          
-                <div class="ui error message"></div>
-          
-              </form>
-          
-              <div class="ui message">
-                New to us? <a href="#">Sign Up</a>
-              </div>
-            </div>
-          </div>
 @stop
 
 @section('adminlte_js')

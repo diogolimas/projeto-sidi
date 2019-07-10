@@ -26,7 +26,6 @@ class CreateUsersTable extends Migration
             $table->integer('quantidade_disciplinas_ministrando')->default(0);
             $table->foreign('papel_id')->references('id')->on('papels')->onDelete('cascade');
             $table->foreign('criador_id')->references('id')->on('users')->onDelete('cascade');
-
             $table->rememberToken();
             $table->timestamps();
         });
