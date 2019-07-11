@@ -33,6 +33,9 @@
                     <th >
                         +
                     </th>
+                    <th >
+                        +
+                    </th>
                 </tr></thead>
                 <tbody>
                 @foreach($turmas as $turma)
@@ -51,6 +54,11 @@
                         </td>
                         <td>
                             <a href="">Ver mais</a>
+                            
+                        </td>
+                        <td>
+                            <a href="{{ route('turmas/editar', ['id'=>$turma->id]) }}">Editar</a>
+                            
                         </td>
                     </tr>
                 @endforeach

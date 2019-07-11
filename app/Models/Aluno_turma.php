@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Aluno_Turma extends Model
+class Aluno_turma extends Model
 {
     public $timestamps = false; //defino que não desejo trabalhar com timestamps
     protected $fillable = [

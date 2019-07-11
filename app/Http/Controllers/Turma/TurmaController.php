@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Papel;
-use App\Models\Aluno_Turma;
+use App\Models\Aluno_turma;
+
 use App\Models\Turma;
 
 class TurmaController extends Controller
@@ -31,7 +32,7 @@ class TurmaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, Turma $turmaModel)
+    public function create(Request $request, Turma $turmaModel, Aluno_turma $aluno_Turma)
     {
         $dataform = [
             'disciplina'    => $request['disciplina'],
@@ -39,7 +40,20 @@ class TurmaController extends Controller
             'professor_id'  => auth()->user()->id
         ];
 
-        $insertarTurma = $turmaModel->insert($dataform);
+
+        $insertarTurma = Turma::create($dataform);
+
+
+
+        foreach ($request['user'] as $user){
+            $insertarAlunoTurma = Aluno_turma::create([
+                'id_turma'  => $insertarTurma->id,
+                'id_user'   => $user,
+
+            ]);
+        }
+
+
         if($insertarTurma){
             $success = 'Turma inserida com sucesso';
             $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(6);
@@ -86,7 +100,14 @@ class TurmaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cat = Turma::find($id);
+        //'<pre>' . var_dump($cat) . '</pre>';
+        
+        if(isset($cat)) {
+            return view('site.home.editarTurma', compact('cat'));
+        }
+        echo "Essa turma não existe";
+        
     }
 
     /**
@@ -98,8 +119,19 @@ class TurmaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
+        $cat = Turma::find($id);
+       
+        if(isset($cat)) {
+            $cat->disciplina = $request->input('disciplina');
+            $cat->codigo = $request->input('codigo');
+            $cat->save();
+        }
+        return redirect ('/turmas-listar');
+       
+        
     }
+    
 
     /**
      * Remove the specified resource from storage.
