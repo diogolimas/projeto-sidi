@@ -7,6 +7,7 @@ use App\Models\Permissao;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\FormUserRequest;
 
 class registroController extends Controller
 {
@@ -41,30 +42,35 @@ class registroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FormUserRequest $request)
     {
+
+
         $papel = Papel::find(auth()->user()->papel_id);
         $permissao = Permissao::find($papel->permissao_id);
+        //verifique o papel
+        $usuario = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'papel_id' => $request->papel,
+            'periodo' => $request->periodo,
+            'criador_id' => auth()->user()->id,
+        ];
+
         if($permissao->cadastrar_usuario == 1) {
-            if ($request->input('name') == null || $request->input('password') == null || $request->input('email') == null)
-                return ('Todos os campos são obrigatórios');
-            else {
-                if ($request->input('password') == $request->input('password_confirmation')) {
-                    User::create([
-                        'name' => $request->name,
-                        'email' => $request->email,
-                        'password' => Hash::make($request->password),
-                        'papel_id' => $request->papel,
-                        'periodo' => $request->periodo,
-                        'criador_id' => auth()->user()->id,
-                    ]);
-                    return view('site.home.index');
-                } else
-                    return ('Senha Não Coincide');
-            }
+                $insertarTurma = User::create($usuario);
+                $success = "usuário inserido com sucesso!";
+                $usuarios = User::where('papel_id','1')->paginate(2);
+                $papeis = Papel::all();
+                $contador = 0;
+                return view('site.home.listar', compact('success','usuarios', 'contador') );
         }
-        else
-            return ('Tá querendo dar uma de espertinho?');
+        else{
+            return "ERROR 404";
+        }
+
+
     }
 
     /**
