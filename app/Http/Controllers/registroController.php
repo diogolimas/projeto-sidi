@@ -64,12 +64,14 @@ class registroController extends Controller
                     $success = "usuário inserido com sucesso!";
                     
                     
-                    $usuarios = User::where('papel_id','1')->paginate(6);
+                    /*$usuarios = User::where('papel_id','1')->paginate(6);
 
                     
                     $papeis = Papel::all();
                     $contador = 0;
-                    return view('site.home.listar', compact('success','usuarios', 'contador') );
+                    return view('site.home.listar', compact('papeis','success','usuarios', 'contador') );
+                    */
+                    return redirect()->route('listarUser');
                 }else{
                     return redirect()
                                     ->back();
