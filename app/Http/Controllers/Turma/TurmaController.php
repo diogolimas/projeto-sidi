@@ -146,6 +146,7 @@ class TurmaController extends Controller
 
     public function alunos($id)
     {
+        
         $id_alunos = Aluno_turma::where('id_turma', $id)->get();
         $alunos = User::all();
         foreach ($id_alunos as $id_aluno){

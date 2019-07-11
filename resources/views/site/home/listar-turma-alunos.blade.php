@@ -17,6 +17,7 @@
                 <th>Disciplinas cursando</th>
             </tr></thead>
             <tbody>
+            @if(isset($usuarios))
             @foreach($usuarios as $usuario)
                 <tr>
                     <td>
@@ -36,6 +37,9 @@
                     </td>
                 </tr>
             @endforeach
+            @else
+                
+            @endif
             </tbody>
         </table>
     </div>
