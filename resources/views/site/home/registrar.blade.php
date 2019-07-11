@@ -4,6 +4,10 @@
 
 @section('content_header')
     <h1>Cadastro de usuário</h1>
+    <ol class="breadcrumb">
+            <li><a href="{{route('home')}}">Página Principal</a></li>
+            <li><a href="">Cadastro de usuários</a></li>
+    </ol>
 @stop
 
 @section('content')
@@ -79,19 +83,19 @@
                                 <label>Selecione o tipo de usuário</label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input id="aluno" value="1" type="radio" name="papel_id" checked="checked">
+                                        <input class="ui input" id="aluno" value="1" type="radio" name="papel_id" >
                                         <label for="aluno" >Aluno</label>
                                     </div>
                                 </div>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input id="professor" value="2" type="radio" name="papel_id">
+                                        <input class="ui input" id="professor" value="2" type="radio" name="papel_id">
                                         <label for="professor">Professor</label>
                                     </div>
                                 </div>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input id="administrador" value="3" type="radio" name="papel_id">
+                                        <input class="ui input" id="administrador" value="3" type="radio" name="papel_id">
                                         <label for="administrador">Adminstrador</label>
                                     </div>
                                 </div>

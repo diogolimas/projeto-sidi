@@ -4,6 +4,9 @@
 
 @section('content_header')
     <h1>Sistema Avaliativo de Disciplinas</h1>
+    <ol class="breadcrumb">
+            <li><a href="{{route('home')}}">Página Principal</a></li>
+    </ol>
 @stop
 
 @section('content')
@@ -27,7 +30,7 @@
             <p>
                 <a class="ui inverted orange button text-black" href="{{route('turmas/listar')}}">Todas as turmas</a>
                 <a class="ui inverted orange button text-black" href="{{route('turmas/registrar')}}">Cadastrar turma</a>
-                <a class="ui inverted orange button text-black" href="">Editar características de turma</a>
+                
                 
             </p>
     </div>

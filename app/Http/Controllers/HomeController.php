@@ -31,7 +31,7 @@ class HomeController extends Controller
 
     public function listarUsuario()
     {
-        $usuarios = User::where('papel_id','1')->paginate(15);
+        $usuarios = User::where('papel_id','1')->paginate(6);
         $papeis = Papel::all();
         $contador = 0;
         return view('site.home.listar', compact('usuarios','papeis','contador'));

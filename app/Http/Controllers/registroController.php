@@ -42,7 +42,7 @@ class registroController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FormUserRequest $request)
+    public function store(FormUserRequest $request, User $us)
     {
 
 
@@ -53,18 +53,28 @@ class registroController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'papel_id' => $request->papel,
+            'papel_id' => $request->papel_id,
             'periodo' => $request->periodo,
             'criador_id' => auth()->user()->id,
         ];
 
         if($permissao->cadastrar_usuario == 1) {
-                $insertarTurma = User::create($usuario);
-                $success = "usuário inserido com sucesso!";
-                $usuarios = User::where('papel_id','1')->paginate(2);
-                $papeis = Papel::all();
-                $contador = 0;
-                return view('site.home.listar', compact('success','usuarios', 'contador') );
+                $insertar = User::create($usuario);
+                if($insertar){
+                    $success = "usuário inserido com sucesso!";
+                    
+                    
+                    $usuarios = User::where('papel_id','1')->paginate(6);
+
+                    
+                    $papeis = Papel::all();
+                    $contador = 0;
+                    return view('site.home.listar', compact('success','usuarios', 'contador') );
+                }else{
+                    return redirect()
+                                    ->back();
+                }
+                
         }
         else{
             return "ERROR 404";

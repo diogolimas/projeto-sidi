@@ -4,7 +4,12 @@
 
 @section('content_header')
     <h1>Listagem de usuários</h1>
-    <p>Aqui apenas aparece os usuários criados por você</p>
+    <ol class="breadcrumb">
+            <li><a href="{{route('home')}}">Página Principal</a></li>
+            <li><a href="{{route('listarUser')}}">Usuários</a></li>
+            
+    </ol>
+    
 @stop
 
 @section('content')
@@ -46,8 +51,9 @@
             @endforeach
             </tbody>
         </table>
+        {{$usuarios->links()}}
 
-        {{ $usuarios->links() }}
+        
 
 
 

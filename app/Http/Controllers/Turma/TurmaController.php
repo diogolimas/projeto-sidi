@@ -44,15 +44,15 @@ class TurmaController extends Controller
         $insertarTurma = Turma::create($dataform);
 
 
+        if(!isset($request['user'])){
+            foreach ($request['user'] as $user){
+                $insertarAlunoTurma = Aluno_turma::create([
+                    'id_turma'  => $insertarTurma->id,
+                    'id_user'   => $user,
 
-        foreach ($request['user'] as $user){
-            $insertarAlunoTurma = Aluno_turma::create([
-                'id_turma'  => $insertarTurma->id,
-                'id_user'   => $user,
-
-            ]);
+                ]);
+            }
         }
-
 
         if($insertarTurma){
             $success = 'Turma inserida com sucesso';
@@ -144,10 +144,16 @@ class TurmaController extends Controller
         //
     }
 
-    public function alunos($id)
+    public function alunos($id, Turma $turma)
     {
         
         $id_alunos = Aluno_turma::where('id_turma', $id)->get();
+        $classroom = Turma::where('id', $id)->get();
+        foreach ($classroom as $value) {
+            $professor = User::where('id', $value->professor_id)->get();
+            $nomeDisciplina = $value->disciplina;
+            
+        }
         $alunos = User::all();
         foreach ($id_alunos as $id_aluno){
             foreach ($alunos as $aluno){
@@ -157,6 +163,6 @@ class TurmaController extends Controller
             }
         }
 
-        return view('site.home.listar-turma-alunos', compact('usuarios'));
+        return view('site.home.listar-turma-alunos', compact('usuarios','classroom', 'professor','nomeDisciplina'));
     }
 }

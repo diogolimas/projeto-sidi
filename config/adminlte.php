@@ -115,8 +115,49 @@ return [
             
             'icon'   => 'home',
         ],
+        [
+            'text'  =>  'Gerenciamento de usuário',
+            'icon'  =>  'user',
+            'submenu'   =>  [
 
-            
+                [
+                    'text' => 'Cadastrar',
+                    'url'   =>  '/registrar',
+                    'icon' => 'plus'
+                ],
+
+                [
+                    'text' => 'Listar',
+                    'url'   =>  '/usuarios',
+                    'icon' => 'th-list'
+                ]
+
+
+            ]
+        ],
+
+
+                [
+            'text'  =>  'Gerenciamento de turmas',
+            'icon'  =>  'user-friends',
+            'submenu'   =>  [
+
+                [
+                    'text' => 'Cadastrar',
+                    'url'   =>  '/registrar-turmas',
+                    'icon' => 'plus'
+                ],
+
+                [
+                    'text' => 'Listar',
+                    'url'   =>  '/turmas-listar',
+                    'icon' => 'th-list'
+                ]
+
+
+            ]
+        ]
+
     ],
 
     /*
