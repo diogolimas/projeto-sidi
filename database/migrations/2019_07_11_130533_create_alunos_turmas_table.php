@@ -17,7 +17,7 @@ class CreateAlunosTurmasTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_turma');
             $table->unsignedBigInteger('id_user');
-            
+
             $table->foreign('id_turma')->references('id')->on('turmas')->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });

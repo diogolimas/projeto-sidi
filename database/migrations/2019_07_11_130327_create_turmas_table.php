@@ -14,10 +14,16 @@ class CreateTurmasTable extends Migration
     public function up()
     {
         Schema::create('turmas', function (Blueprint $table) {
+
             $table->bigIncrements('id');
             $table->string('disciplina', 60);
             $table->string('codigo', 10)->unique();
+
+            $table->unsignedBigInteger('professor_id');
+            $table->foreign('professor_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
+
+
         });
     }
 
