@@ -156,6 +156,6 @@ class TurmaController extends Controller
             }
         }
 
-        return view('site.home.listar-turma-alunos', compact('usuarios'));
+        return view('site.home.listar-turma-alunos', compact('usuarios', 'id'));
     }
 }

@@ -30,5 +30,11 @@ class UsersTableSeeder extends Seeder
             'email'     => 'josemateusp08cs@gmail.com',
             'password'  => bcrypt('12345678'),
         ]);
+        User::create([
+            'papel_id'  => '3',
+            'name'      => 'Larrire',
+            'email'     => 'larrire.karan@navi.ifrn.edu.br',
+            'password'  => bcrypt('12345678'),
+        ]);
     }
 }

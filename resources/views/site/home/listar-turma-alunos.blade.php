@@ -7,6 +7,9 @@
 @stop
 
 @section('content')
+
+        <a class="ui inverted orange button text-black" href="{{ route('turma/avaliacoes', ['id'=>$id]) }}">Atividades da turma</a>
+
         <table class="ui celled striped table">
             <thead>
             <tr>

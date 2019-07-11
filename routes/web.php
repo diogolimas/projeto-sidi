@@ -28,6 +28,10 @@ Route::group( ['middleware' => 'auth'], function(){
     //registrar usuario
     Route::get('/registrar', 'registroController@index')->name('registrar');
     Route::post('/registrar/efetuar', 'registroController@store')->name('efetuarRegistro');
+
+    //rotas das avaliacoes
+    Route::get('avaliacoes/{turma}/', 'AvaliacaoController@index')->name('turma/avaliacoes'); 
+    Route::get('avaliacoes/cadastrar/{turma}/', 'AvaliacaoController@create')->name('turma/cadastrarAvaliacao');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
