@@ -148,16 +148,16 @@
             </script>
             <script>
                 $(function () {
-                    $('#periodo').hide();
-                    $('#aluno').click(function () {
-                        $('#periodo').show();
-                    });
-                    $('#professor').click(function () {
-                        $('#periodo').hide();
-                    });
-                    $('#administrador').click(function () {
-                        $('#periodo').hide();
-                    });
+                     $('.periodo').hide();
+                     $('#aluno').click(function () {
+                         $('.periodo').show();
+                     });
+                     $('#professor').click(function () {
+                         $('.periodo').hide();
+                     });
+                     $('#administrador').click(function () {
+                        $('.periodo').hide();
+                     });
                 });
 
             </script>

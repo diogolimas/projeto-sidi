@@ -8,28 +8,50 @@
 @stop
 
 @section('content')
-    <?php
-    use App\User;
-    use App\Models\Papel;
 
-    $usuarios = User::all();
-    $contador = 0;
 
-    foreach ( $usuarios as $usuario ) {
-        if($usuario->criador_id == auth()->user()->id){
-            $contador+=1;
-            $papel = Papel::find($usuario->papel_id);
-            echo "<h2>Usuário $contador</h2>
-                <h4>Nome: $usuario->name</h4>
-                <h4>Email: $usuario->email</h4>
-                <h4>Papel: $papel->nome</h4>";
-            if($usuario->papel_id == 1)
-                echo "<h4>Período: $usuario->periodo</h4>
-                      <h4>Disciplinas cursando: $usuario->quantidade_disciplinas_cursando</h4>";
-            if($usuario->papel_id == 2)
-                echo "<h4>Disciplinas ministrando: $usuario->quantidade_disciplinas_ministrando</h4>";
-            echo "<br>";
-        }
-    }
-    ?>
+
+
+    @if(isset($success))
+        <div class="ui success message">
+            <i class="close icon"></i>
+            <div class="header">{{$success}} </div>
+        </div>
+    @endif
+
+
+
+        <table class="ui celled striped table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th class="collapsing">Nome do aluno</th>
+                <th>Email</th>
+                <th>Papel</th>
+                <th>Período</th>
+                <th >
+                    Disciplina cursando
+                </th>
+            </tr></thead>
+            <tbody>
+            @foreach($usuarios as $usuario)
+                <tr>
+                    <td>{{$usuario->id}}</td>
+                    <td>{{$usuario->name}}</td>
+                    <td>{{$usuario->email}}</td>
+                    <td>{{$usuario->papel_id}}</td>
+                    <td>{{$usuario->periodo}}</td>
+                    <td>{{$usuario->quantidade_disciplinas_cursando}}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+
+        {{ $usuarios->links() }}
+
+
+
+
+
+
 @stop
