@@ -55,7 +55,7 @@
                             @if ($errors->has('password'))
                                 <span class="help-block">
                                             <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
+                                </span>
                             @endif
                         </div>
                         <div class="ui input d-block mb-2 has-feedback {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
@@ -64,17 +64,17 @@
                             <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                             @if ($errors->has('password_confirmation'))
                                 <span class="help-block">
-                                            <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                        </span>
+                                    <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                </span>
                             @endif
                         </div>
                         <select name="papel" class="ui selection dropdown">
-                            <option value="1">Aluno</option>
-                            <option value="2">Professor</option>
-                            <option value="3">Administrador</option>
+                            <option value="1" id="aluno">Aluno</option>
+                            <option value="2" id="professor">Professor<s/option>
+                            <option value="3" id="administrador">Administrador</option>
                         </select>
                         <div class="ui input mb-2 has-feedback d-block ">
-                            <input type="text" name="periodo" class="form-control" value="{{ old('periodo') }}"
+                            <input id="periodo" type="text" name="periodo" class="form-control" value="{{ old('periodo') }}"
                                    placeholder="Período">
                             <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                         </div>

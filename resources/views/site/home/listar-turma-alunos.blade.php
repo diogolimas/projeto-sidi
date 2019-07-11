@@ -15,33 +15,28 @@
                 <th>Email</th>
                 <th>Período</th>
                 <th>Disciplinas cursando</th>
-                <th >
-                    +
-                </th>
             </tr></thead>
             <tbody>
-            @foreach($alunos as $aluno)
+            @foreach($usuarios as $usuario)
                 <tr>
                     <td>
-                        {{$turma->id}}
+                        {{$usuario->id}}
                     </td>
                     <td>
-                        {{$turma->disciplina}}
+                        {{$usuario->name}}
                     </td>
                     <td>
-                        {{$turma->codigo}}
+                        {{$usuario->email}}
                     </td>
                     <td>
-                        {{$turma->professor_id}}
+                        {{$usuario->periodo}}
                     </td>
                     <td>
-                        <a href="/turmas-listar/alunos/{{$turma->id}}">Ver mais</a>
+                        {{$usuario->quantidade_disciplinas_cursando}}
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-
-        {{ $turmas->links() }}
     </div>
 @stop

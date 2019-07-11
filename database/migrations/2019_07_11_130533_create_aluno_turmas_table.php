@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAlunosTurmasTable extends Migration
+class CreateAlunoTurmasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAlunosTurmasTable extends Migration
      */
     public function up()
     {
-        Schema::create('alunos_turmas', function (Blueprint $table) {
+        Schema::create('aluno_turmas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_turma');
             $table->unsignedBigInteger('id_user');
