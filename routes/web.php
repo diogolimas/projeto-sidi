@@ -21,6 +21,7 @@ Route::group( ['middleware' => 'auth'], function(){
 
     //referente a turmas
     Route::get('/registrar-turmas', 'Turma\TurmaController@index')->name('turmas/registrar');
+    Route::get('/turmas-listar', 'Turma\TurmaController@show')->name('turmas/listar');
     Route::post('/registrar-turmas', 'Turma\TurmaController@create')->name('turmas/registrar');
 
 

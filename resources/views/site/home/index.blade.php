@@ -25,7 +25,7 @@
             <h2 class="ui right floated header">Gerenciamento de turmas</h2>
             <div class="ui clearing divider"></div>
             <p>
-                <a class="ui inverted orange button text-black" href="">Todas as turmas</a>
+                <a class="ui inverted orange button text-black" href="{{route('turmas/listar')}}">Todas as turmas</a>
                 <a class="ui inverted orange button text-black" href="{{route('turmas/registrar')}}">Cadastrar turma</a>
                 <a class="ui inverted orange button text-black" href="">Editar características de turma</a>
                 
