@@ -100,7 +100,14 @@ class TurmaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cat = Turma::find($id);
+        //'<pre>' . var_dump($cat) . '</pre>';
+        
+        if(isset($cat)) {
+            return view('site.home.editarTurma', compact('cat'));
+        }
+        echo "Essa turma não existe";
+        
     }
 
     /**
@@ -112,8 +119,19 @@ class TurmaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
+        $cat = Turma::find($id);
+       
+        if(isset($cat)) {
+            $cat->disciplina = $request->input('disciplina');
+            $cat->codigo = $request->input('codigo');
+            $cat->save();
+        }
+        return redirect ('/turmas-listar');
+       
+        
     }
+    
 
     /**
      * Remove the specified resource from storage.

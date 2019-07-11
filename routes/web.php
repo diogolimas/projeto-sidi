@@ -22,6 +22,8 @@ Route::group( ['middleware' => 'auth'], function(){
     Route::get('/turmas-listar', 'Turma\TurmaController@show')->name('turmas/listar');
     Route::get('/turmas-listar/alunos/{id}', 'Turma\TurmaController@alunos');
     Route::post('/registrar-turmas', 'Turma\TurmaController@create')->name('turmas/registrar');
+    Route::get('/turmas-editar/{turma}', 'Turma\TurmaController@edit')->name('turmas/editar');
+    Route::post('/turmas-atualizar/{turma}', 'Turma\TurmaController@update')->name('turmas/update');
 
     //registrar usuario
     Route::get('/registrar', 'registroController@index')->name('registrar');
