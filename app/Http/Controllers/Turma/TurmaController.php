@@ -125,4 +125,19 @@ class TurmaController extends Controller
     {
         //
     }
+
+    public function alunos($id)
+    {
+        $id_alunos = Aluno_turma::where('id_turma', $id)->get();
+        $alunos = User::all();
+        foreach ($id_alunos as $id_aluno){
+            foreach ($alunos as $aluno){
+                if($aluno->id == $id_aluno->id_user){
+                    $usuarios[] = User::find($aluno->id);
+                }
+            }
+        }
+
+        return view('site.home.listar-turma-alunos', compact('usuarios'));
+    }
 }
