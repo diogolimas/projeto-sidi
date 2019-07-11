@@ -50,7 +50,7 @@
                             {{$turma->professor_id}}
                         </td>
                         <td>
-                            <a href="">Ver mais</a>
+                            <a href="/turmas-listar/alunos/{{$turma->id}}">Ver mais</a>
                         </td>
                     </tr>
                 @endforeach
@@ -58,14 +58,5 @@
             </table>
 
             {{ $turmas->links() }}
-
-
-
-
-
-
-
-
-
     </div>
 @stop

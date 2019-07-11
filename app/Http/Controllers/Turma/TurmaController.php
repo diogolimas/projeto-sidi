@@ -111,4 +111,9 @@ class TurmaController extends Controller
     {
         //
     }
+
+    public function alunos($id)
+    {
+        return view('site.home.listar-turma-alunos', compact('id'));
+    }
 }
