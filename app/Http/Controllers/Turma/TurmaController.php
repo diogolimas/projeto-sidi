@@ -42,7 +42,7 @@ class TurmaController extends Controller
         $insertarTurma = $turmaModel->insert($dataform);
         if($insertarTurma){
             $success = 'Turma inserida com sucesso';
-            $turmas = $turmaModel->turmas()->paginate(2);
+            $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(6);
             $usersthis = User::where('criador_id', auth()->user()->id)->get();
             return view('site.home.listarTurmas', compact('success', 'usersthis', 'turmas'));
         }else{
