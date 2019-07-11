@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Papel;
-use App\Models\Aluno_Turma;
+use App\Models\Aluno_turma;
+
 use App\Models\Turma;
 
 class TurmaController extends Controller
@@ -31,7 +32,7 @@ class TurmaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, Turma $turmaModel)
+    public function create(Request $request, Turma $turmaModel, Aluno_turma $aluno_Turma)
     {
         $dataform = [
             'disciplina'    => $request['disciplina'],
@@ -39,10 +40,23 @@ class TurmaController extends Controller
             'professor_id'  => auth()->user()->id
         ];
 
-        $insertarTurma = $turmaModel->insert($dataform);
+
+        $insertarTurma = Turma::create($dataform);
+
+
+
+        foreach ($request['user'] as $user){
+            $insertarAlunoTurma = Aluno_turma::create([
+                'id_turma'  => $insertarTurma->id,
+                'id_user'   => $user,
+
+            ]);
+        }
+
+
         if($insertarTurma){
             $success = 'Turma inserida com sucesso';
-            $turmas = $turmaModel->turmas()->paginate(2);
+            $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(6);
             $usersthis = User::where('criador_id', auth()->user()->id)->get();
             return view('site.home.listarTurmas', compact('success', 'usersthis', 'turmas'));
         }else{
