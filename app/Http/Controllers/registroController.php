@@ -17,7 +17,12 @@ class registroController extends Controller
      */
     public function index()
     {
-        return view('site.home.registrarAdmin');
+        $papel = Papel::find(auth()->user()->papel_id);
+        $permissao = Permissao::find($papel->permissao_id);
+        if($permissao->cadastrar_usuario == 1)
+            return view('site.home.registrar');
+        else
+            return ('Você não tem acesso à esta página');
     }
 
     /**
@@ -49,7 +54,8 @@ class registroController extends Controller
                         'name' => $request->name,
                         'email' => $request->email,
                         'password' => Hash::make($request->password),
-                        'papel_id' => '3',
+                        'papel_id' => $request->papel,
+                        'periodo' => $request->periodo,
                         'criador_id' => auth()->user()->id,
                     ]);
                     return view('site.home.index');

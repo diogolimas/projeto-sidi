@@ -28,16 +28,6 @@ class HomeController extends Controller
         return view('site.home.index');
     }
 
-    public function registro()
-    {
-        $papel = Papel::find(auth()->user()->papel_id);
-        $permissao = Permissao::find($papel->permissao_id);
-        if($permissao->cadastrar_usuario == 1)
-            return view('site.home.registrar');
-        else
-            return ('Você não tem acesso à esta página');
-    }
-
     public function listarUsuario()
     {
         return view('site.home.listar');
