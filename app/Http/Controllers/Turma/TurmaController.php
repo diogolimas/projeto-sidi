@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Turma;
 
+use App\Http\Requests\FormCadastroTurmas;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -32,7 +33,7 @@ class TurmaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, Turma $turmaModel, Aluno_turma $aluno_Turma)
+    public function create(FormCadastroTurmas $request, Turma $turmaModel, Aluno_turma $aluno_Turma)
     {
         //array para o cadastro das disciplinas
         $dataform = [
@@ -52,11 +53,9 @@ class TurmaController extends Controller
                     'id_user'   => $user
                 ]);
             }
-        }else{
-            $insertarAlunoTurma = false;
         }
 
-        if($insertarTurma && $insertarAlunoTurma){
+        if($insertarTurma){
             $success = 'Turma inserida com sucesso';
             $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(6);
             $usersthis = User::where('criador_id', auth()->user()->id)->get();
@@ -119,7 +118,7 @@ class TurmaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FormCadastroTurmas $request, $id)
     {
        
         $cat = Turma::find($id);

@@ -46,17 +46,22 @@
                             {!! csrf_field() !!}
                             
                             <div class="ui input mb-2 has-feedback d-block ">
-                                <input type="text" name="disciplina" class="form-control" value=""
+                                <input type="text" name="disciplina" class="form-control" value="{{old('disciplina')}}"
                                     placeholder="Digite o nome da disciplina">
-                                
+                                @error('disciplina')
+                                    <div class="ui red message">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="ui input d-block mb-2 has-feedback ">
-                                <input type="text" name="codigo" class="form-control" value="{{ old('email') }}"
+                                <input type="text" name="codigo" class="form-control" value="{{ old('codigo') }}"
                                     placeholder="Digite o código da turma">
+                                @error('codigo')
+                                    <div class="ui red message">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div>
 
-                                <label title="Clique para mostrar" class="click" for="">Listagem de usuários para adicionar </label>
+                                <label title="Clique para mostrar" class="click h3" for="">Listagem de usuários para adicionar </label>
                                 <i class="click"  class="fas fa-sort-down"></i>
                                 <div id="listagem-usuarios">
                                     @foreach ($usersthis as $users)
