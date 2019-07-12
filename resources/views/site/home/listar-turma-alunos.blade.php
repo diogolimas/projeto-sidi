@@ -13,7 +13,7 @@
     </ol>
 @stop
 
-@section('content')
+@section('content') 
         <div class="ui container">
             <div class="ui segment">
                 <h2 class="ui right floated header">
@@ -27,17 +27,20 @@
                 </h2>
                     <div class="ui clearing divider"></div>
                 <p>
-                <strong>
-                    @forelse ($professor as $item)
-                        {{$item->name}}
-                    @empty
-                        
-                    @endforelse
-                </strong> - Professor Principal
-
+                    <strong class="ui left floated">
+                        @forelse ($professor as $item)
+                            {{$item->name}}
+                        @empty
+                            
+                        @endforelse
+                    </strong> - Professor Principal
+                    <a class="ui inverted orange button text-black right floated" href="{{ route('turma/avaliacoes', ['id'=>$id]) }}">Atividades da turma</a>
+                    <div class="ui clearing divider"></div>
                 </p>
+
+                
             </div>
-        
+
         <table class="ui celled striped table">
             <thead>
             <tr>

@@ -167,11 +167,9 @@ class TurmaController extends Controller
             }
 
         if(isset($usuarios)){
-            return view('site.home.listar-turma-alunos', compact('usuarios','classroom', 'professor','nomeDisciplina'));
+            return view('site.home.listar-turma-alunos', compact('usuarios','classroom', 'professor','nomeDisciplina', 'id'));
         }else{
-            return view('site.home.listar-turma-alunos', compact('classroom', 'professor','nomeDisciplina'));
+            return view('site.home.listar-turma-alunos', compact('classroom', 'professor','nomeDisciplina', 'id'));
         }
-
-
     }
 }

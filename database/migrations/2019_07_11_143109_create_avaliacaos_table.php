@@ -15,6 +15,8 @@ class CreateAvaliacaosTable extends Migration
     {
         Schema::create('avaliacaos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_turma');
+            $table->foreign('id_turma')->references('id')->on('turmas')->onDelete('cascade');
             $table->string('nome', 60);
             $table->string('descricao', 45);
             $table->timestamps();
