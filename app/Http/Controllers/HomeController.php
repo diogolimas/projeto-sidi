@@ -34,12 +34,9 @@ class HomeController extends Controller
 
         $usuarios = User::where('papel_id','1')->paginate(6);
         $papeis = Papel::all();
-        $contador = 0;
-        if(isset($success)){
-            return view('site.home.listar', compact('usuarios','papeis','contador', 'success'));
-        }else{
-            return view('site.home.listar', compact('usuarios','papeis','contador'));
-        }
+
+        return view('site.home.listar', compact('usuarios','papeis'));
+
 
     }
 }

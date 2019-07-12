@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\FormUserRequest;
+use Illuminate\Support\Facades\DB;
 
 class registroController extends Controller
 {
@@ -60,22 +61,23 @@ class registroController extends Controller
 
         if($permissao->cadastrar_usuario == 1) {
 
+
                 $insertar = User::create($usuario);
                 if($insertar){
                     $success = "usuário inserido com sucesso!";
                     
-                    
-                    /*$usuarios = User::where('papel_id','1')->paginate(6);
+                    $usuarios = DB::table('users')->where('papel_id','1')->paginate(2);
 
-                    
                     $papeis = Papel::all();
-                    $contador = 0;
-                    return view('site.home.listar', compact('papeis','success','usuarios', 'contador') );
-                    */
-                    return redirect()->route('listarUser')->with('succes', 'Usuário inserido com sucesso');
+
+
+
+                    return view('site.home.listar', compact('papeis','success','usuarios') );
+
                 }else{
                     return redirect()
                                     ->back();
+
                 }
                 
         }
