@@ -48,28 +48,26 @@
                 <th>Disciplinas cursando</th>
             </tr></thead>
             <tbody>
-            @if(isset($students))
-                @forelse($students as $aluno)
-                    <tr>
-                        <td>
-                            {{$aluno->id}}
-                        </td>
-                        <td>
-                            {{$aluno->name}}
-                        </td>
-                        <td>
-                            {{$aluno->email}}
-                        </td>
-                        <td>
-                            {{$aluno->periodo}}
-                        </td>
-                        <td>
-                            {{$aluno->quantidade_disciplinas_cursando}}
-                        </td>
-                    </tr>
-                @empty
-
-                @endforelse
+            @if(isset($usuarios))
+            @forelse($usuarios as $usuario)
+                <tr>
+                    <td>
+                        {{$usuario->id}}
+                    </td>
+                    <td>
+                        {{$usuario->name}}
+                    </td>
+                    <td>
+                        {{$usuario->email}}
+                    </td>
+                    <td>
+                        {{$usuario->periodo}}
+                    </td>
+                    <td>
+                        {{$usuario->quantidade_disciplinas_cursando}}
+                    </td>
+                </tr>
+            @endforeach
             @else
                 
             @endif

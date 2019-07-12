@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Turma;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-
 use App\User;
 use App\Models\Papel;
 use App\Models\Aluno_turma;
@@ -45,18 +43,18 @@ class TurmaController extends Controller
 
         $insertarTurma = Turma::create($dataform);
 
-        $usuariosRequest = $request['user'];
 
-        if(isset($usuariosRequest)){
-            foreach ($usuariosRequest as $user){
-                    $insertarAlunoTurma = Aluno_turma::create([
+        if(!isset($request['user'])){
+            foreach ($request['user'] as $user){
+                $insertarAlunoTurma = Aluno_turma::create([
                     'id_turma'  => $insertarTurma->id,
-                    'id_user'   => $user
+                    'id_user'   => $user,
+
                 ]);
             }
         }
 
-        if($insertarTurma && $insertarAlunoTurma){
+        if($insertarTurma){
             $success = 'Turma inserida com sucesso';
             $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(6);
             $usersthis = User::where('criador_id', auth()->user()->id)->get();
@@ -156,43 +154,15 @@ class TurmaController extends Controller
             $nomeDisciplina = $value->disciplina;
             
         }
-
-        $alunosTurmas = DB::table('aluno_turmas')
-                                    ->select('id_user')
-                                    ->where('id_turma', $id)
-                                    ->get();
-
-
-        if(!empty($alunosTurmas)){
-            foreach ($alunosTurmas as $item){
-                $students =  DB::table('users')
-                                            ->where('id',$item->id_user)
-                                            ->paginate(6);
-
-            }
-        }else{
-
-            $students = [
-                'id' => '',
-                'name'  =>'',
-                'email' => '',
-                'periodo'   =>  '',
-                'quantidade_disciplinas_cursando' => ''
-            ];
-        }
-
-
-
-        /*
-        $alunos = User::where('papel_id','1');
+        $alunos = User::all();
         foreach ($id_alunos as $id_aluno){
             foreach ($alunos as $aluno){
                 if($aluno->id == $id_aluno->id_user){
-                    $usuarios = User::find($aluno->id);
+                    $usuarios[] = User::find($aluno->id);
                 }
             }
         }
-        */
-        return view('site.home.listar-turma-alunos', compact('students','classroom', 'professor','nomeDisciplina'));
+
+        return view('site.home.listar-turma-alunos', compact('usuarios','classroom', 'professor','nomeDisciplina'));
     }
 }

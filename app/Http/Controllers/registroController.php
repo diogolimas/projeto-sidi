@@ -62,15 +62,19 @@ class registroController extends Controller
                 $insertar = User::create($usuario);
                 if($insertar){
                     $success = "usuário inserido com sucesso!";
-                    $usuarios = User::where('papel_id','1')->paginate(5);
-                    $dataForm = $request->all();
+                    
+                    
+                    /*$usuarios = User::where('papel_id','1')->paginate(6);
+
+                    
                     $papeis = Papel::all();
                     $contador = 0;
-                    return view('site.home.listar', compact('papeis','success','usuarios', 'contador', 'dataForm') );
+                    return view('site.home.listar', compact('papeis','success','usuarios', 'contador') );
+                    */
+                    return redirect()->route('listarUser');
                 }else{
                     return redirect()
-                                    ->back()
-                                    ->with('error','Usuário não inserido');
+                                    ->back();
                 }
                 
         }
