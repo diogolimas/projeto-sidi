@@ -51,7 +51,10 @@
             @endforeach
             </tbody>
         </table>
-        {{$usuarios->links()}}
+
+
+            {{ $usuarios->appends(Request::all())->links() }}
+
 
         
 
