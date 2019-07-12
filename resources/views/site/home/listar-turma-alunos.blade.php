@@ -49,7 +49,7 @@
             </tr></thead>
             <tbody>
             @if(isset($usuarios))
-            @forelse($usuarios as $usuario)
+                @foreach($usuarios as $usuario)
                 <tr>
                     <td>
                         {{$usuario->id}}

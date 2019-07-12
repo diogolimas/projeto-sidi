@@ -59,6 +59,7 @@ class registroController extends Controller
         ];
 
         if($permissao->cadastrar_usuario == 1) {
+
                 $insertar = User::create($usuario);
                 if($insertar){
                     $success = "usuário inserido com sucesso!";
@@ -71,7 +72,7 @@ class registroController extends Controller
                     $contador = 0;
                     return view('site.home.listar', compact('papeis','success','usuarios', 'contador') );
                     */
-                    return redirect()->route('listarUser');
+                    return redirect()->route('listarUser')->with('succes', 'Usuário inserido com sucesso');
                 }else{
                     return redirect()
                                     ->back();

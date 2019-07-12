@@ -34,6 +34,7 @@ class TurmaController extends Controller
      */
     public function create(Request $request, Turma $turmaModel, Aluno_turma $aluno_Turma)
     {
+        //array para o cadastro das disciplinas
         $dataform = [
             'disciplina'    => $request['disciplina'],
             'codigo'        => $request['codigo'],
@@ -44,17 +45,18 @@ class TurmaController extends Controller
         $insertarTurma = Turma::create($dataform);
 
 
-        if(!isset($request['user'])){
+        if(isset($request['user'])){
             foreach ($request['user'] as $user){
                 $insertarAlunoTurma = Aluno_turma::create([
                     'id_turma'  => $insertarTurma->id,
-                    'id_user'   => $user,
-
+                    'id_user'   => $user
                 ]);
             }
+        }else{
+            $insertarAlunoTurma = false;
         }
 
-        if($insertarTurma){
+        if($insertarTurma && $insertarAlunoTurma){
             $success = 'Turma inserida com sucesso';
             $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(6);
             $usersthis = User::where('criador_id', auth()->user()->id)->get();
@@ -155,14 +157,22 @@ class TurmaController extends Controller
             
         }
         $alunos = User::all();
-        foreach ($id_alunos as $id_aluno){
-            foreach ($alunos as $aluno){
-                if($aluno->id == $id_aluno->id_user){
-                    $usuarios[] = User::find($aluno->id);
+
+
+            foreach ($id_alunos as $id_aluno){
+                foreach ($alunos as $aluno){
+                    if($aluno->id == $id_aluno->id_user){
+                        $usuarios[] = User::find($aluno->id);
+                    }
                 }
             }
+
+        if(isset($usuarios)){
+            return view('site.home.listar-turma-alunos', compact('usuarios','classroom', 'professor','nomeDisciplina'));
+        }else{
+            return view('site.home.listar-turma-alunos', compact('classroom', 'professor','nomeDisciplina'));
         }
 
-        return view('site.home.listar-turma-alunos', compact('usuarios','classroom', 'professor','nomeDisciplina'));
+
     }
 }

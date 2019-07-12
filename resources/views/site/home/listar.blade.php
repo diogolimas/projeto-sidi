@@ -34,7 +34,7 @@
                 <th>Email</th>
                 <th>Papel</th>
                 <th>Período</th>
-                <th >
+                <th>
                     Disciplina cursando
                 </th>
             </tr></thead>

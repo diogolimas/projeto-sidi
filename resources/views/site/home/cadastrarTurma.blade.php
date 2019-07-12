@@ -37,7 +37,7 @@
                             </div>
                         @endif
                         @if(isset($error))
-                            <div class="ui positive message">
+                            <div class="ui negative message">
                                 <i class="close icon"></i>
                                 <div class="header"> {{$error}}</div>
                             </div>
