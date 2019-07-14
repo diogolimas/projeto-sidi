@@ -1,9 +1,14 @@
 @extends('adminlte::page')
 
-@section('title', 'Sidi - Registrar turma')
+@section('title', 'Turmas - SIDI')
 
 @section('content_header')
-    <h1>Cadastro de turmas</h1>
+    <h1>Turmas</h1>
+    <ol class="breadcrumb">
+            <li><a href="{{route('home')}}">Página Principal</a></li>
+            <li><a href="{{route('turmas/listar')}}">Turmas</a></li>
+            
+    </ol>
 @stop
 
 @section('content')
@@ -31,10 +36,11 @@
                     <th>Código</th>
                     <th>Professor</th>
                     <th >
-                        +
+                        <i class="info circle icon"></i>
                     </th>
-                    <th >
-                        +
+                    <th>
+                        Editar
+                        
                     </th>
                 </tr></thead>
                 <tbody>
@@ -50,16 +56,18 @@
                             {{$turma->codigo}}
                         </td>
                         <td>
+
                             {{$turma->professor_id}}
                         </td>
                         <td>
 
-                            <a href="/turmas-listar/alunos/{{$turma->id}}">Ver mais</a>
-                            <a href="">Ver mais</a>
+                            <a class="ui inverted green button"  href="/turmas-listar/alunos/{{$turma->id}}">Ver mais</a>
                             
                         </td>
                         <td>
-                            <a href="{{ route('turmas/editar', ['id'=>$turma->id]) }}">Editar</a>
+                            <a href="{{ route('turmas/editar', ['id'=>$turma->id]) }}">
+                                <i class="edit outline icon"></i>
+                            </a>
                             
 
                         </td>

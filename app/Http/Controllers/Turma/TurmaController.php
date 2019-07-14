@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Turma;
 
+use App\Http\Requests\FormCadastroTurmas;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -32,8 +33,9 @@ class TurmaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, Turma $turmaModel, Aluno_turma $aluno_Turma)
+    public function create(FormCadastroTurmas $request, Turma $turmaModel, Aluno_turma $aluno_Turma)
     {
+        //array para o cadastro das disciplinas
         $dataform = [
             'disciplina'    => $request['disciplina'],
             'codigo'        => $request['codigo'],
@@ -44,15 +46,14 @@ class TurmaController extends Controller
         $insertarTurma = Turma::create($dataform);
 
 
-
-        foreach ($request['user'] as $user){
-            $insertarAlunoTurma = Aluno_turma::create([
-                'id_turma'  => $insertarTurma->id,
-                'id_user'   => $user,
-
-            ]);
+        if(isset($request['user'])){
+            foreach ($request['user'] as $user){
+                $insertarAlunoTurma = Aluno_turma::create([
+                    'id_turma'  => $insertarTurma->id,
+                    'id_user'   => $user
+                ]);
+            }
         }
-
 
         if($insertarTurma){
             $success = 'Turma inserida com sucesso';
@@ -117,7 +118,7 @@ class TurmaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FormCadastroTurmas $request, $id)
     {
        
         $cat = Turma::find($id);
@@ -144,18 +145,31 @@ class TurmaController extends Controller
         //
     }
 
-    public function alunos($id)
+    public function alunos($id, Turma $turma)
     {
+        
         $id_alunos = Aluno_turma::where('id_turma', $id)->get();
+        $classroom = Turma::where('id', $id)->get();
+        foreach ($classroom as $value) {
+            $professor = User::where('id', $value->professor_id)->get();
+            $nomeDisciplina = $value->disciplina;
+            
+        }
         $alunos = User::all();
-        foreach ($id_alunos as $id_aluno){
-            foreach ($alunos as $aluno){
-                if($aluno->id == $id_aluno->id_user){
-                    $usuarios[] = User::find($aluno->id);
+
+
+            foreach ($id_alunos as $id_aluno){
+                foreach ($alunos as $aluno){
+                    if($aluno->id == $id_aluno->id_user){
+                        $usuarios[] = User::find($aluno->id);
+                    }
                 }
             }
-        }
 
-        return view('site.home.listar-turma-alunos', compact('usuarios', 'id'));
+        if(isset($usuarios)){
+            return view('site.home.listar-turma-alunos', compact('usuarios','classroom', 'professor','nomeDisciplina', 'id'));
+        }else{
+            return view('site.home.listar-turma-alunos', compact('classroom', 'professor','nomeDisciplina', 'id'));
+        }
     }
 }

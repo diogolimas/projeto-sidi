@@ -32,6 +32,10 @@ Route::group( ['middleware' => 'auth'], function(){
     //rotas das avaliacoes
     Route::get('avaliacoes/{turma}/', 'AvaliacaoController@index')->name('turma/avaliacoes'); 
     Route::get('avaliacoes/cadastrar/{turma}/', 'AvaliacaoController@create')->name('turma/cadastrarAvaliacao');
+    Route::post('avaliacoes/salvar/', 'AvaliacaoController@store')->name('turma/salvarAvaliacao');
+    Route::get('avaliacoes/editar/{avaliacao}', 'AvaliacaoController@edit')->name('turma/editarAvaliacao');
+    Route::put('avaliacoes/atualizar/{avaliacao}', 'AvaliacaoController@update')->name('turma/atualizarAvaliacao');
+    Route::delete('avaliacoes/deletar/{avaliacao}', 'AvaliacaoController@destroy')->name('turma/deletarAvaliacao');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

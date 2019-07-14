@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Permissao;
 use App\Models\Papel;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -30,6 +31,12 @@ class HomeController extends Controller
 
     public function listarUsuario()
     {
-        return view('site.home.listar');
+
+        $usuarios = User::where('papel_id','1')->paginate(6);
+        $papeis = Papel::all();
+
+        return view('site.home.listar', compact('usuarios','papeis'));
+
+
     }
 }

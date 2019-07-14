@@ -1,14 +1,45 @@
 @extends('adminlte::page')
 
-@section('title', 'Sidi - Registrar turma')
+@section('title',
+    $nomeDisciplina.' - Descrição'
+)
 
 @section('content_header')
-    <h1>Cadastro de turmas</h1>
+    <h1>Descrição da turma</h1>
+    <ol class="breadcrumb">
+            <li><a href="{{route('home')}}">Página Principal</a></li>
+            <li><a href="{{route('turmas/listar')}}">Turmas</a></li>
+            <li><a href="">Descrição</a></li>
+    </ol>
 @stop
 
-@section('content')
+@section('content') 
+        <div class="ui container">
+            <div class="ui segment">
+                <h2 class="ui right floated header">
+                    @forelse ($classroom as $item)
+                        {{$item->disciplina}}
+                        -
+                        {{$item->codigo}}
+                    @empty
+                        
+                    @endforelse
+                </h2>
+                    <div class="ui clearing divider"></div>
+                <p>
+                    <strong class="ui left floated">
+                        @forelse ($professor as $item)
+                            {{$item->name}}
+                        @empty
+                            
+                        @endforelse
+                    </strong> - Professor Principal
+                    <a class="ui inverted orange button text-black right floated" href="{{ route('turma/avaliacoes', ['id'=>$id]) }}">Atividades da turma</a>
+                    <div class="ui clearing divider"></div>
+                </p>
 
-        <a class="ui inverted orange button text-black" href="{{ route('turma/avaliacoes', ['id'=>$id]) }}">Atividades da turma</a>
+                
+            </div>
 
         <table class="ui celled striped table">
             <thead>
@@ -20,7 +51,8 @@
                 <th>Disciplinas cursando</th>
             </tr></thead>
             <tbody>
-            @foreach($usuarios as $usuario)
+            @if(isset($usuarios))
+                @foreach($usuarios as $usuario)
                 <tr>
                     <td>
                         {{$usuario->id}}
@@ -39,7 +71,11 @@
                     </td>
                 </tr>
             @endforeach
+            @else
+                
+            @endif
             </tbody>
         </table>
     </div>
+</div>
 @stop
