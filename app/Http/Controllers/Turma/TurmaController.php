@@ -49,6 +49,10 @@ class TurmaController extends Controller
 
         if(isset($request['user'])){
             foreach ($request['user'] as $user){
+                $usuario = User::find($user);
+                $usuario->quantidade_disciplinas_cursando += 1;
+                $usuario->save();
+
                 $insertarAlunoTurma = Aluno_turma::create([
                     'id_turma'  => $insertarTurma->id,
                     'id_user'   => $user

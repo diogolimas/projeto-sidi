@@ -40,14 +40,16 @@
             </tr></thead>
             <tbody>
             @foreach($dados as $dado)
-                <tr>
-                    <td>{{$dado->id}}</td>
-                    <td>{{$dado->name}}</td>
-                    <td>{{$dado->email}}</td>
-                    <td>{{$dado->nome}}</td>
-                    <td>{{$dado->periodo}}</td>
-                    <td>{{$dado->quantidade_disciplinas_cursando}}</td>
-                </tr>
+                @if($dado->criador_id == auth()->user()->id)
+                    <tr>
+                        <td>{{$dado->id}}</td>
+                        <td>{{$dado->name}}</td>
+                        <td>{{$dado->email}}</td>
+                        <td>{{$dado->nome}}</td>
+                        <td>{{$dado->periodo}}</td>
+                        <td>{{$dado->quantidade_disciplinas_cursando}}</td>
+                    </tr>
+                @endif
             @endforeach
             </tbody>
         </table>
