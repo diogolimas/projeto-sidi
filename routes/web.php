@@ -20,7 +20,7 @@ Route::group( ['middleware' => 'auth'], function(){
     //referente a turmas
     Route::get('/registrar-turmas', 'Turma\TurmaController@index')->name('turmas/registrar');
     Route::get('/turmas-listar', 'Turma\TurmaController@show')->name('turmas/listar');
-    Route::get('/turmas-listar/alunos/{id}', 'Turma\TurmaController@alunos');
+    Route::get('/turmas-listar/alunos/{id}', 'Turma\TurmaController@alunos')->name('turmaVerMais');
     Route::post('/registrar-turmas', 'Turma\TurmaController@create')->name('turmas/registrar');
     Route::get('/turmas-editar/{turma}', 'Turma\TurmaController@edit')->name('turmas/editar');
     Route::post('/turmas-atualizar/{turma}', 'Turma\TurmaController@update')->name('turmas/update');
@@ -33,6 +33,11 @@ Route::group( ['middleware' => 'auth'], function(){
     Route::get('avaliacoes/{turma}/', 'AvaliacaoController@index')->name('turma/avaliacoes'); 
     Route::get('avaliacoes/cadastrar/{turma}/', 'AvaliacaoController@create')->name('turma/cadastrarAvaliacao');
     Route::post('avaliacoes/salvar/', 'AvaliacaoController@store')->name('turma/salvarAvaliacao');
+
+    //rotas dos indicadores
+    Route::get('indicador/registrar/{avaliacao}/', 'IndicadorController@create')->name('indicador/registrar');
+    Route::post('indicador/{avaliacao}/registrar/', 'IndicadorController@store')->name('indicador/efetuar');
+    Route::get('indicador/{indicador}/', 'IndicadorController@index')->name('indicador/mostrar');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

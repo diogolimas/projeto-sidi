@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIndicadorsTable extends Migration
+class CreateAlunoIndicadorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateIndicadorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('indicadors', function (Blueprint $table) {
+        Schema::create('aluno_indicadors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_avaliacao');
-            $table->foreign('id_avaliacao')->references('id')->on('avaliacaos')->onDelete('cascade');
-            $table->string('descricao_indicador', 200);
-            $table->float('nota_maxima')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateIndicadorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('indicadors');
+        Schema::dropIfExists('aluno_indicadors');
     }
 }

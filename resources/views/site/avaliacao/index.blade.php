@@ -20,6 +20,10 @@
                         <h2>{{ $av->nome }}</h2>
                         <div class="ui divider"></div>
                         {{ $av->descricao }}
+                        <div class="ui divider"></div>
+                        <a href="{{route('indicador/mostrar', ['avaliacao' => $av->id])}}">Ver Indicadores</a>
+                        <div class="ui divider"></div>
+                        <a href="{{route('indicador/registrar', ['avaliacao' => $av->id])}}">Registrar indicador</a>
                     </div>
 
                 @endforeach

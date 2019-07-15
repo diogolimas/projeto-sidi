@@ -12,6 +12,6 @@ class Indicador extends Model
      * @var array
      */
     protected $fillable = [
-        'descricao', 'resposta', 'situacao', 'nota'
+        'id_avaliacao', 'descricao_indicador', 'nota_maxima'
     ];
 }

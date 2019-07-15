@@ -36,5 +36,33 @@ class UsersTableSeeder extends Seeder
             'email'     => 'larrire.karan@navi.ifrn.edu.br',
             'password'  => bcrypt('12345678'),
         ]);
+        User::create([
+            'papel_id'  => '1',
+            'criador_id'=> '1',
+            'name'      => 'Cesimar',
+            'email'     => 'cesimar@navi.com',
+            'password'  => bcrypt('12345678'),
+        ]);
+        User::create([
+            'papel_id'  => '1',
+            'criador_id'=> '1',
+            'name'      => 'Higor',
+            'email'     => 'higor@navi.com',
+            'password'  => bcrypt('12345678'),
+        ]);
+        User::create([
+            'papel_id'  => '1',
+            'criador_id'=> '4',
+            'name'      => 'Cesimar',
+            'email'     => 'cesimar@navi.co',
+            'password'  => bcrypt('12345678'),
+        ]);
+        User::create([
+            'papel_id'  => '1',
+            'criador_id'=> '4',
+            'name'      => 'Higor',
+            'email'     => 'higor@navi.co',
+            'password'  => bcrypt('12345678'),
+        ]);
     }
 }

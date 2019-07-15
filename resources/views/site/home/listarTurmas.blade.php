@@ -45,33 +45,35 @@
                 </tr></thead>
                 <tbody>
                 @foreach($dados as $dado)
-                    <tr>
-                        <td>
-                            {{$dado->id}}
-                        </td>
-                        <td>
-                            {{$dado->disciplina}}
-                        </td>
-                        <td>
-                            {{$dado->codigo}}
-                        </td>
-                        <td>
+                    @if($dado->professor_id == auth()->user()->id)
+                        <tr>
+                            <td>
+                                {{$dado->id}}
+                            </td>
+                            <td>
+                                {{$dado->disciplina}}
+                            </td>
+                            <td>
+                                {{$dado->codigo}}
+                            </td>
+                            <td>
 
-                            {{$dado->name}}
-                        </td>
-                        <td>
+                                {{$dado->name}}
+                            </td>
+                            <td>
 
-                            <a class="ui inverted green button"  href="/turmas-listar/alunos/{{$dado->id}}">Ver mais</a>
-                            
-                        </td>
-                        <td>
-                            <a href="{{ route('turmas/editar', ['id'=>$dado->id]) }}">
-                                <i class="edit outline icon"></i>
-                            </a>
-                            
+                                <a class="ui inverted green button"  href="/turmas-listar/alunos/{{$dado->id}}">Ver mais</a>
 
-                        </td>
-                    </tr>
+                            </td>
+                            <td>
+                                <a href="{{ route('turmas/editar', ['id'=>$dado->id]) }}">
+                                    <i class="edit outline icon"></i>
+                                </a>
+
+
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
                 </tbody>
             </table>
