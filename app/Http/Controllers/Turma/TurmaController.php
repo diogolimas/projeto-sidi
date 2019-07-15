@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Turma;
 
 use App\Http\Requests\FormCadastroTurmas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Papel;
@@ -58,12 +59,19 @@ class TurmaController extends Controller
         if($insertarTurma){
             $success = 'Turma inserida com sucesso';
             $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(6);
-            $usersthis = User::where('criador_id', auth()->user()->id)->get();
-            return view('site.home.listarTurmas', compact('success', 'usersthis', 'turmas'));
+            $dados = DB::table('users')
+                ->join('turmas', 'turmas.professor_id', '=', 'users.id')
+                ->select('*')
+                ->get();
+
+            return view('site.home.listarTurmas', compact('success', 'dados', 'turmas'));
         }else{
             $error = 'Turma não inserida';
-            $usersthis = User::where('criador_id', auth()->user()->id)->get();
-            return view('site.home.cadastrarTurma', compact('error', 'usersthis'));
+            $dados = DB::table('users')
+                ->join('turmas', 'turmas.professor_id', '=', 'users.id')
+                ->select('*')
+                ->get();
+            return view('site.home.cadastrarTurma', compact('error', 'dados'));
         }
 
 
@@ -88,9 +96,13 @@ class TurmaController extends Controller
      */
     public function show()
     {
-        $usersthis = User::where('criador_id', auth()->user()->id)->get();
-        $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(6);
-        return view('site.home.listarTurmas', compact('usersthis', 'turmas'));
+        $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(6); //Paginção
+        $dados = DB::table('users')
+            ->join('turmas', 'turmas.professor_id', '=', 'users.id')
+            ->select('*')
+            ->get();
+
+        return view('site.home.listarTurmas', compact('dados', 'turmas'));
     }
 
     /**

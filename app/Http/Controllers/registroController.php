@@ -66,13 +66,14 @@ class registroController extends Controller
                 if($insertar){
                     $success = "usuário inserido com sucesso!";
                     
-                    $usuarios = DB::table('users')->where('papel_id','1')->paginate(2);
+                    $usuarios = DB::table('users')->where('papel_id','1')->paginate(2); //Paginação
 
-                    $papeis = Papel::all();
+                    $dados = DB::table('papels')
+                        ->join('users', 'users.papel_id', '=', 'papels.id')
+                        ->select('*')
+                        ->get();
 
-
-
-                    return view('site.home.listar', compact('papeis','success','usuarios') );
+                    return view('site.home.listar', compact('dados','success','usuarios') );
 
                 }else{
                     return redirect()

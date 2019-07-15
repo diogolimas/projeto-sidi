@@ -44,28 +44,28 @@
                     </th>
                 </tr></thead>
                 <tbody>
-                @foreach($turmas as $turma)
+                @foreach($dados as $dado)
                     <tr>
                         <td>
-                            {{$turma->id}}
+                            {{$dado->id}}
                         </td>
                         <td>
-                            {{$turma->disciplina}}
+                            {{$dado->disciplina}}
                         </td>
                         <td>
-                            {{$turma->codigo}}
-                        </td>
-                        <td>
-
-                            {{$turma->professor_id}}
+                            {{$dado->codigo}}
                         </td>
                         <td>
 
-                            <a class="ui inverted green button"  href="/turmas-listar/alunos/{{$turma->id}}">Ver mais</a>
+                            {{$dado->name}}
+                        </td>
+                        <td>
+
+                            <a class="ui inverted green button"  href="/turmas-listar/alunos/{{$dado->id}}">Ver mais</a>
                             
                         </td>
                         <td>
-                            <a href="{{ route('turmas/editar', ['id'=>$turma->id]) }}">
+                            <a href="{{ route('turmas/editar', ['id'=>$dado->id]) }}">
                                 <i class="edit outline icon"></i>
                             </a>
                             

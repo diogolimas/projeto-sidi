@@ -39,14 +39,14 @@
                 </th>
             </tr></thead>
             <tbody>
-            @foreach($usuarios as $usuario)
+            @foreach($dados as $dado)
                 <tr>
-                    <td>{{$usuario->id}}</td>
-                    <td>{{$usuario->name}}</td>
-                    <td>{{$usuario->email}}</td>
-                    <td>{{$usuario->papel_id}}</td>
-                    <td>{{$usuario->periodo}}</td>
-                    <td>{{$usuario->quantidade_disciplinas_cursando}}</td>
+                    <td>{{$dado->id}}</td>
+                    <td>{{$dado->name}}</td>
+                    <td>{{$dado->email}}</td>
+                    <td>{{$dado->nome}}</td>
+                    <td>{{$dado->periodo}}</td>
+                    <td>{{$dado->quantidade_disciplinas_cursando}}</td>
                 </tr>
             @endforeach
             </tbody>

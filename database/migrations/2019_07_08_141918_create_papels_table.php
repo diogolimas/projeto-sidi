@@ -19,7 +19,6 @@ class CreatePapelsTable extends Migration
             $table->text('descricao', 200);
             $table->string('nome', 45);
             $table->foreign('permissao_id')->references('id')->on('permissaos')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

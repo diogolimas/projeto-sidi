@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Permissao;
 use App\Models\Papel;
 use App\User;
@@ -32,10 +33,13 @@ class HomeController extends Controller
     public function listarUsuario()
     {
 
-        $usuarios = User::where('papel_id','1')->paginate(6);
-        $papeis = Papel::all();
+        $usuarios = User::where('papel_id','1')->paginate(6); //Isso tá aqui só para a paginação
+        $dados = DB::table('papels')
+            ->join('users', 'users.papel_id', '=', 'papels.id')
+            ->select('*')
+            ->get();
 
-        return view('site.home.listar', compact('usuarios','papeis'));
+        return view('site.home.listar', compact('usuarios','dados'));
 
 
     }

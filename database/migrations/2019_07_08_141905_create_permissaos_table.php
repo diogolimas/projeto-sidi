@@ -21,7 +21,6 @@ class CreatePermissaosTable extends Migration
             $table->boolean('edit_delete_usuario')->nullable();
             $table->boolean('edit_delete_avaliacao')->nullable();
             $table->boolean('edit_delete_indicador')->nullable();
-            $table->timestamps();
         });
     }
 

@@ -12,17 +12,17 @@ class PapelsTableSeeder extends Seeder
      */
     public function run()
     {
-        Papel::create([
+        Papel::insert([
             'permissao_id' => '1',
             'descricao' => 'Pode fazer nada',
             'nome' => 'Aluno',
         ]);
-        Papel::create([
+        Papel::insert([
             'permissao_id' => '2',
             'descricao' => 'Pode fazer o que quiser',
             'nome' => 'Professor',
         ]);
-        Papel::create([
+        Papel::insert([
             'permissao_id' => '3',
             'descricao' => 'Pode fazer o que quiser',
             'nome' => 'Administrador',

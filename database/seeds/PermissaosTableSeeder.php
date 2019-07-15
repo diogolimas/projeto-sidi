@@ -13,7 +13,7 @@ class PermissaosTableSeeder extends Seeder
     public function run()
     {
         //Permissões do Aluno
-        Permissao::create([
+        Permissao::insert([
             'cadastrar_usuario' => '0',
             'cadastrar_avaliacao' => '0',
             'cadastrar_indicador' => '0',
@@ -23,7 +23,7 @@ class PermissaosTableSeeder extends Seeder
         ]);
 
         //Permissões do Professor
-        Permissao::create([
+        Permissao::insert([
             'cadastrar_usuario' => '1',
             'cadastrar_avaliacao' => '1',
             'cadastrar_indicador' => '1',
@@ -33,7 +33,7 @@ class PermissaosTableSeeder extends Seeder
         ]);
 
         //Permissões do Administrador
-        Permissao::create([
+        Permissao::insert([
             'cadastrar_usuario' => '1',
             'cadastrar_avaliacao' => '1',
             'cadastrar_indicador' => '1',
