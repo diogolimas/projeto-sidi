@@ -2,9 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aluno_turma;
+use App\Models\Indicador;
 use Illuminate\Http\Request;
 use App\Models\Avaliacao;
 use App\Models\Turma;
+use App\User;
+
+use App\Http\Controllers\IndicadorController;
+use Illuminate\Support\Facades\DB;
+
 
 class AvaliacaoController extends Controller
 {
@@ -38,7 +45,17 @@ class AvaliacaoController extends Controller
 
     public function show($id)
     {
-        //
+        $avaliacao = Avaliacao::find($id);
+        $indicadores = Indicador::where('id_avaliacao', $id)->get();
+
+
+        $alunos = DB::table('users')
+            ->join('aluno_turmas', 'users.id', '=', 'aluno_turmas.id_user')
+            ->where('id_turma', $avaliacao->id_turma)
+            ->select('*')
+            ->get();
+
+        return view('site.avaliacao.show', compact('avaliacao', 'indicadores', 'alunos'));
     }
 
     public function edit($id)

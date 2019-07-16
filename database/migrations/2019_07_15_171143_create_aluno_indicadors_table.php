@@ -15,6 +15,9 @@ class CreateAlunoIndicadorsTable extends Migration
     {
         Schema::create('aluno_indicadors', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_aluno');
+
+            $table->float('nota')->default(0);
             $table->timestamps();
         });
     }

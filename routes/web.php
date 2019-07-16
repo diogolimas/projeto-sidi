@@ -33,6 +33,7 @@ Route::group( ['middleware' => 'auth'], function(){
     Route::get('avaliacoes/{turma}/', 'AvaliacaoController@index')->name('turma/avaliacoes'); 
     Route::get('avaliacoes/cadastrar/{turma}/', 'AvaliacaoController@create')->name('turma/cadastrarAvaliacao');
     Route::post('avaliacoes/salvar/', 'AvaliacaoController@store')->name('turma/salvarAvaliacao');
+    Route::get('avaliacoes/{avaliacao}/ver', 'AvaliacaoController@show')->name('turma/verAvaliacao');
 
     //rotas dos indicadores
     Route::get('indicador/registrar/{avaliacao}/', 'IndicadorController@create')->name('indicador/registrar');

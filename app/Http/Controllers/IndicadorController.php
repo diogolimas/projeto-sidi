@@ -53,7 +53,7 @@ class IndicadorController extends Controller
         Indicador::create($form);
 
         $id = Avaliacao::find($avaliacao)->id_turma;
-        return redirect(route('turma/avaliacoes', ['turma' => $id]));
+        return redirect(route('turma/verAvaliacao', ['id' => $avaliacao]));
     }
 
     /**

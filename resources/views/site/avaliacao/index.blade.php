@@ -16,15 +16,14 @@
         @if( count($avaliacoes) )
                 @foreach($avaliacoes as $av)
 
-                    <div class="ui segment">
-                        <h2>{{ $av->nome }}</h2>
-                        <div class="ui divider"></div>
-                        {{ $av->descricao }}
-                        <div class="ui divider"></div>
-                        <a class="ui inverted green button text-black" href="{{route('indicador/mostrar', ['avaliacao' => $av->id])}}">Ver Indicadores</a>
+                    <a href="{{ route('turma/verAvaliacao', ['id'=>$av->id])  }}">
+                        <div class="ui segment mt-3">
+                            <h2>{{ $av->nome }}</h2>
+                            <div class="ui divider"></div>
+                            {{ $av->descricao }}
 
-                        <a class="ui inverted green button text-black" href="{{route('indicador/registrar', ['avaliacao' => $av->id])}}">Registrar indicador</a>
-                    </div>
+                        </div>
+                    </a>
 
                 @endforeach
         @else

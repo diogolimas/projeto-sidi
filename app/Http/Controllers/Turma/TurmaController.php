@@ -136,7 +136,11 @@ class TurmaController extends Controller
         $usersthis = User::where('criador_id', auth()->user()->id)->get();
 
         if(isset($cat)) {
-            return view('site.home.editarTurma', compact('cat', 'usersthis', 'alunos'));
+            if(isset($alunos)) {
+                return view('site.home.editarTurma', compact('cat', 'usersthis', 'alunos'));
+            }else{
+                return view('site.home.editarTurma', compact('cat', 'usersthis'));
+            }
         }
         echo "Essa turma não existe";
 

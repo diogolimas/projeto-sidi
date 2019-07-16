@@ -18,7 +18,7 @@ class CreateAvaliacaosTable extends Migration
             $table->unsignedBigInteger('id_turma');
             $table->foreign('id_turma')->references('id')->on('turmas')->onDelete('cascade');
             $table->string('nome', 60);
-            $table->string('descricao', 45);
+            $table->string('descricao', 200);
             $table->timestamps();
         });
     }
