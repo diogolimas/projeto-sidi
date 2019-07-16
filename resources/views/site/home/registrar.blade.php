@@ -27,7 +27,7 @@
                         <h2 class="ui header ">  <a href="{{url('/')}}">
                                 <i class="arrow left icon black"></i>
                             </a>
-                            {{$titulo_page ?? 'Registrar novo Usuário'}}
+                            {{$titulo_page ?? 'Registrar novo usuário'}}
                         </h2>
                     </div>
                     @if(isset($success))
