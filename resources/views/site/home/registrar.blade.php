@@ -86,7 +86,7 @@
                                 <label>Selecione o tipo de usuário</label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input class="ui input" id="aluno" value="1" type="radio" name="papel_id" >
+                                        <input class="ui input" id="cliqueShow" value="1" type="radio" name="papel_id" >
                                         <label for="aluno" >Aluno</label>
                                     </div>
                                 </div>
@@ -110,8 +110,8 @@
                         </div>
 
 
-                        <div class="periodo ui input mb-2 has-feedback d-block ">
-                            <input  type="text" name="periodo" class="periodo form-control"
+                        <div id="mostrarPeriodo" class="d-none ui input mb-2">
+                            <input  type="text" name="periodo"  class="form-control"
                                    placeholder="Período">
 
                         </div>

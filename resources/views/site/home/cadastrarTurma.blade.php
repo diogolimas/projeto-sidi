@@ -61,9 +61,17 @@
                             </div>
                             <div>
 
-                                <label title="Clique para mostrar" class="click h3" for="">Listagem de usuários para adicionar </label>
+                                <div class="ui form">
+                                    <div class="inline field">
+                                        <div class="ui checkbox">
+                                            <input type="checkbox" tabindex="0" class="hidden">
+                                            <label>Checkbox</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <label id="clicarMostrar" title="Clique para mostrar" class="click h3" for="">Listagem de usuários para adicionar </label>
                                 <i class="click"  class="fas fa-sort-down"></i>
-                                <div id="listagem-usuarios">
+                                <div id="listagem-usuarios" class="d-none">
                                     @foreach ($usersthis as $users)
                                         <input type="checkbox" name="user[]"  value="{{$users->id}}" >
                                             <label for="">{{$users->name}}</label> <br>

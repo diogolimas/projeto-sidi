@@ -36,14 +36,14 @@
                     @csrf
 
                     <input type="hidden" name="id" value="{{ $turma->id }}">
-                    <div class="form-group">
+                    <div class="ui input mb-2 d-block">
                         <input class="form-control" type="text" name="nomeavaliacao" placeholder="Nome da atividade" required>
                     </div>
-                    <div class="form-group">
+                    <div class="ui form mb-2">
                         <textarea class="form-control" type="text" name="descricao" placeholder="Descricao" required></textarea>
                     </div>
                     <div class="form-group">
-                        <button class="form-control btn btn-warning" type="submit">Cadastrar atividade</button>
+                        <button class="ui inverted green button btn-lg btn-block" type="submit">Cadastrar atividade</button>
                     </div>
                 </form>
 

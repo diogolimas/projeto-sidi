@@ -148,16 +148,28 @@
             </script>
             <script>
                 $(function () {
-                     $('.periodo').hide();
-                     $('#aluno').click(function () {
-                         $('.periodo').show();
+
+
+                    $('#cliqueShow').click(function(){
+                        $('#mostrarPeriodo').removeClass('d-none');
+                        $('#mostrarPeriodo').addClass('d-block');
+                    });
+
+                    let one = $('div#listagem-usuarios');
+
+                     $('label#clicarMostrar').click(function(){
+                         hideShow(one);
                      });
-                     $('#professor').click(function () {
-                         $('.periodo').hide();
-                     });
-                     $('#administrador').click(function () {
-                        $('.periodo').hide();
-                     });
+
+                    function hideShow(x){
+                        $(x).toggleClass('d-block').fadeIn('slow');
+                    };
+
+
+
+
+
+                    $('.ui.checkbox').checkbox();
                 });
 
             </script>

@@ -9,7 +9,7 @@
 @section('content')
 
     <div>
-        <a class="ui inverted orange button text-black" href="{{ route('turma/cadastrarAvaliacao', ['id'=>$id]) }}">Adicionar avaliação</a>
+        <a class="ui inverted green button text-black" href="{{ route('turma/cadastrarAvaliacao', ['id'=>$id]) }}">Adicionar avaliação</a>
     </div>
 
     <div class="mt-3">
@@ -21,14 +21,19 @@
                         <div class="ui divider"></div>
                         {{ $av->descricao }}
                         <div class="ui divider"></div>
-                        <a href="{{route('indicador/mostrar', ['avaliacao' => $av->id])}}">Ver Indicadores</a>
-                        <div class="ui divider"></div>
-                        <a href="{{route('indicador/registrar', ['avaliacao' => $av->id])}}">Registrar indicador</a>
+                        <a class="ui inverted green button text-black" href="{{route('indicador/mostrar', ['avaliacao' => $av->id])}}">Ver Indicadores</a>
+
+                        <a class="ui inverted green button text-black" href="{{route('indicador/registrar', ['avaliacao' => $av->id])}}">Registrar indicador</a>
                     </div>
 
                 @endforeach
         @else
-                Nenhuma avaliação foi dada para esta turma
+
+            <div class="ui segment">
+                <p>Nenhuma avaliação foi dada para esta turma</p>
+                <div class="ui divider"></div>
+
+
         @endif
     </div>
 
