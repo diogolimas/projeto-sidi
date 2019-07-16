@@ -27,7 +27,7 @@
                         <h2 class="ui header ">  <a href="{{url('/')}}">
                                 <i class="arrow left icon black"></i>
                             </a>
-                            {{$titulo_page ?? 'Registrar Novo Usuário'}}
+                            {{$titulo_page ?? 'Registrar novo Usuário'}}
                         </h2>
                     </div>
                     @if(isset($success))
@@ -114,7 +114,7 @@
                         </div>
 
                         <button type="submit"
-                                class="ui inverted orange button btn-lg btn-block"
+                                class="ui inverted green button btn-lg btn-block"
                         >Cadastrar</button>
 
                     </form>

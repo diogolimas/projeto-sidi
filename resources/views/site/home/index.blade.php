@@ -18,8 +18,8 @@
             <h2 class="ui left floated header">Gerenciamento de usuários</h2>
             <div class="ui clearing divider"></div>
             <p>
-                <a class="ui inverted orange button text-black" href="{{route('listarUser')}}">Todos os usuários</a>
-                <a class="ui inverted orange button text-black"  href="{{route('registrar')}}">Registrar Novo Usuário</a>
+                <a class="ui inverted green button text-black" href="{{route('listarUser')}}">Todos os usuários</a>
+                <a class="ui inverted green button text-black"  href="{{route('registrar')}}">Registrar Novo Usuário</a>
             
             </p>
     </div>
@@ -28,8 +28,8 @@
             <h2 class="ui left floated header">Gerenciamento de turmas</h2>
             <div class="ui clearing divider"></div>
             <p>
-                <a class="ui inverted orange button text-black" href="{{route('turmas/listar')}}">Todas as turmas</a>
-                <a class="ui inverted orange button text-black" href="{{route('turmas/registrar')}}">Cadastrar turma</a>
+                <a class="ui inverted green button text-black" href="{{route('turmas/listar')}}">Todas as turmas</a>
+                <a class="ui inverted green button text-black" href="{{route('turmas/registrar')}}">Cadastrar turma</a>
                 
                 
             </p>

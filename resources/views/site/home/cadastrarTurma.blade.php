@@ -71,7 +71,7 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="ui inverted orange button btn-lg btn-block">
+                            <button type="submit" class="ui inverted green button btn-lg btn-block">
                             Cadastrar
                             </button>
                             

@@ -27,15 +27,28 @@
                 </h2>
                     <div class="ui clearing divider"></div>
                 <p>
-                    <strong class="ui left floated">
-                        @forelse ($professor as $item)
-                            {{$item->name}}
-                        @empty
-                            
-                        @endforelse
-                    </strong> - Professor Principal
-                    <a class="ui inverted orange button text-black right floated" href="{{ route('turma/avaliacoes', ['id'=>$id]) }}">Atividades da turma</a>
-                    <div class="ui clearing divider"></div>
+                    <div class="ui grid">
+                        <div class="four wide column">
+                            <strong class="ui left floated">
+                                @forelse ($professor as $item)
+                                    {{$item->name}}
+                                @empty
+
+                                @endforelse
+                            </strong> - Professor Principal
+                        </div>
+                        <div class="four wide column">
+
+                        </div>
+
+                        <div class="eight wide column">
+                            <a class="ui inverted green button text-black right floated" href="{{ route('turma/avaliacoes', ['id'=>$id]) }}">Atividades da turma</a>
+                            <a class="ui inverted green button text-black right floated" href="{{ route('registrar', ['id'=>$id]) }}">Adicionar aluno</a>
+                        </div>
+                    </div>
+
+
+                    <div class="ui clearing divider mt-4"></div>
                 </p>
 
                 
