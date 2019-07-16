@@ -4,11 +4,11 @@
 
 @section('content_header')
     <h1>Cadastro de turmas</h1>
-    <ol class="breadcrumb">
-            <li><a href="{{route('home')}}">Página Principal</a></li>
-            <li><a href="">Cadastro de turmas</a></li>
-         
-    </ol>
+    <div class="ui small breadcrumb">
+        <a class="section" href="{{route('home')}}">Página inicial</a>
+        <i class="right chevron icon divider"></i>
+        <a class="section">Cadastro de turmas</a>
+    </div>
 @stop
 
 @section('content')
