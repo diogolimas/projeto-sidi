@@ -4,9 +4,9 @@
 
 @section('content_header')
     <h1>Sistema Avaliativo de Disciplinas</h1>
-    <ol class="breadcrumb">
-            <li><a href="{{route('home')}}">Página Principal</a></li>
-    </ol>
+    <div class="ui small breadcrumb">
+        <a class="section" href="{{route('home')}}">Página inicial</a>
+    </div>
 @stop
 
 @section('content')
