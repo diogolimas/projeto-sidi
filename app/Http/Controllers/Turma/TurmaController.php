@@ -119,12 +119,27 @@ class TurmaController extends Controller
     {
         $cat = Turma::find($id);
         //'<pre>' . var_dump($cat) . '</pre>';
-        
+
+        $dados = DB::table('users')
+            ->join('aluno_turmas', 'aluno_turmas.id_user', '=', 'users.id')
+            ->select('*')
+            ->get();
+
+        $contador = 0;
+        foreach ($dados as $dado){
+            if($dado->id_turma == $id) {
+                $alunos[$contador] = $dado->id_user;
+                $contador += 1;
+            }
+        }
+
+        $usersthis = User::where('criador_id', auth()->user()->id)->get();
+
         if(isset($cat)) {
-            return view('site.home.editarTurma', compact('cat'));
+            return view('site.home.editarTurma', compact('cat', 'usersthis', 'alunos'));
         }
         echo "Essa turma não existe";
-        
+
     }
 
     /**
@@ -136,7 +151,13 @@ class TurmaController extends Controller
      */
     public function update(FormCadastroTurmas $request, $id)
     {
-       
+        $turmas = Aluno_turma::where('id_turma', $id)->get();
+        foreach ($turmas as $turma) {
+            $usuario = User::find($turma->id_user);
+            $usuario->quantidade_disciplinas_cursando -= 1;
+            $usuario->save();
+            $turma->delete();
+        }
         $cat = Turma::find($id);
        
         if(isset($cat)) {
@@ -144,8 +165,21 @@ class TurmaController extends Controller
             $cat->codigo = $request->input('codigo');
             $cat->save();
         }
+
+        if(isset($request['user'])){
+            foreach ($request['user'] as $user){
+                $usuario = User::find($user);
+                $usuario->quantidade_disciplinas_cursando += 1;
+                $usuario->save();
+
+                $insertarAlunoTurma = Aluno_turma::create([
+                    'id_turma'  => $id,
+                    'id_user'   => $user
+                ]);
+            }
+        }
+
         return redirect ('/turmas-listar');
-       
         
     }
     
