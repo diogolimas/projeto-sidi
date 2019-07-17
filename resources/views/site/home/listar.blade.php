@@ -65,9 +65,10 @@
                         <td>{{$dado->periodo}}</td>
                         <td>{{$dado->quantidade_disciplinas_cursando}}</td>
                         <td>
-                            <a href="{{route('exluir-usuario',[$dado->id])}}">
+                            <button data-id="{{$dado->id}}" class="excluir ui inverted red button">
                                 <i class="trash alternate outline icon"></i>
-                            </a>
+                            </button>
+                            
                             <a href="{{route('editar-usuario',  [$dado->id])}}"><i class="edit icon"></i></a>
                         </td>
                     </tr>
@@ -81,6 +82,10 @@
             {{$usuarios->links()}}
         @endif
 
+
+
+
+        <input class="id" type="hidden"  value="" id="input-target">
 
 
 

@@ -30,7 +30,7 @@ Route::group( ['middleware' => 'auth'], function(){
     Route::get('/registrar', 'registroController@index')->name('registrar');
     Route::post('/registrar/efetuar', 'registroController@store')->name('efetuarRegistro');
     Route::get('/usuario-excluir/{aluno}','registroController@excluir')->name('exluir-usuario');
-    Route::get('/usuario-editar/{aluno}','registroController@pegarUsuario')->name('editar-usuario');
+    Route::get('/usuario-editar/{aluno}','registroController@edit')->name('editar-usuario');
 
 
     //rotas das avaliacoes

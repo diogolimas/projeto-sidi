@@ -149,9 +149,11 @@
             <script>
                 $(function () {
 
-                    $('button.excluir').click(function () {
-                        console.log('o evento tá indo');
-                        $('.ui.basic.modal').modal('show');
+                    $('button.excluir').click(function (e) {
+                        e.preventDefault();
+                        let id = $(this).data('id');
+
+                        $('input#input-target').val(id);
                     });
 
                     $('.ui.checkbox').checkbox();
