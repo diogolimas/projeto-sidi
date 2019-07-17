@@ -132,21 +132,21 @@ class registroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(FormUserRequest $request)
+    public function update(Request $request)
     {
 
         $usuario = User::find($request->id);
 
 
-        if(isset($cat)) {
+        if(isset($usuario)) {
             $usuario->name = $request->input('name');
             $usuario->email = $request->input('email');
-            $usuario->email = $request->input('papel_id');
-            $usuario->email = $request->input('periodo');
+            $usuario->papel_id = $request->input('papel_id');
+            $usuario->periodo = $request->input('periodo');
             $usuario->save();
                 return redirect ()->route('listarUser',['success' => 'usuário editado!']);
         }else{
-            return redirect ()->route('home',['error'=>'Usuário não encontrado']);
+            return redirect ()->route('listarUser',['error'=>'Usuário não encontrado']);
         }
 
     }

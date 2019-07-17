@@ -47,7 +47,7 @@
                         </div>
                     @endif
                     <form class=""
-                          action="<?php if(isset($editar)){ ?>{{route('efetuar-edit')}}<?php }else{?>{{ route('efetuarRegistro') }}<?php } ?>"
+                          action="{{route('efetuar-edit')}}"
                           method="post">
                         {!! csrf_field() !!}
                         @if(isset($editar))

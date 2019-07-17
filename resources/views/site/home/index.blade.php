@@ -10,11 +10,17 @@
 @stop
 
 @section('content')
-    
-    
 
 
+
+        @if(isset($error))
+            <div class="ui success message">
+                <i class="close icon"></i>
+                <div class="header">{{$error}} </div>
+            </div>
+        @endif
     <div class="ui segment">
+
             <h2 class="ui left floated header">Gerenciamento de usuários</h2>
             <div class="ui clearing divider"></div>
             <p>

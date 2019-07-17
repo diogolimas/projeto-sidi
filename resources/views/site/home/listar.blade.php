@@ -20,9 +20,13 @@
             <div class="header">{{$success}} </div>
         </div>
     @endif
-       <?php
-           $usu = '';
-       ?>
+
+    @if(isset($error))
+        <div class="ui danger message">
+            <i class="close icon"></i>
+            <div class="header">{{$error}} </div>
+        </div>
+    @endif
 
 
 
