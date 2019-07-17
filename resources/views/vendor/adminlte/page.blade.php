@@ -149,11 +149,18 @@
             <script>
                 $(function () {
 
+                    $('.ui.checkbox').checkbox();
 
-                    $('#cliqueShow').click(function(){
-                        $('#mostrarPeriodo').removeClass('d-none');
-                        $('#mostrarPeriodo').addClass('d-block');
-                    });
+                    $('.mostrarPeriodo').hide();
+                     $('.cliqueShow').click(function () {
+                         $('.mostrarPeriodo').show();
+                     });
+                     $('.professor').click(function () {
+                         $('.mostrarPeriodo').hide();
+                     });
+                     $('.administrador').click(function () {
+                        $('.mostrarPeriodo').hide();
+                     });
 
                     let one = $('div#listagem-usuarios');
 
@@ -169,7 +176,7 @@
 
 
 
-                    $('.ui.checkbox').checkbox();
+                    
                 });
 
             </script>

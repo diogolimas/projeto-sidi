@@ -86,20 +86,20 @@
                                 <label>Selecione o tipo de usuário</label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input class="ui input" id="cliqueShow" value="1" type="radio" name="papel_id" >
-                                        <label for="aluno" >Aluno</label>
+                                        <input class="ui input cliqueShow" id="cliqueShow" value="1" type="radio" name="papel_id" >
+                                        <label for="aluno" class="cliqueShow">Aluno</label>
                                     </div>
                                 </div>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input class="ui input" id="professor" value="2" type="radio" name="papel_id">
-                                        <label for="professor">Professor</label>
+                                        <input class="ui input professor" id="professor" value="2" type="radio" name="papel_id">
+                                        <label for="professor" class="professor">Professor</label>
                                     </div>
                                 </div>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input class="ui input" id="administrador" value="3" type="radio" name="papel_id">
-                                        <label for="administrador">Adminstrador</label>
+                                        <input class="ui input administrador" id="administrador" value="3" type="radio" name="papel_id">
+                                        <label for="administrador" class="administrador">Adminstrador</label>
                                     </div>
                                 </div>
                                 @error('papel_id')
@@ -110,8 +110,8 @@
                         </div>
 
 
-                        <div id="mostrarPeriodo" class="d-none ui input mb-2">
-                            <input  type="text" name="periodo"  class="form-control"
+                        <div  class="mostrarPeriodo ui input mb-2 d-block">
+                            <input  type="text" name="periodo"  class="mostrarPeriodo form-control"
                                    placeholder="Período">
 
                         </div>
