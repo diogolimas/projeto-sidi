@@ -67,10 +67,11 @@
                                 <i class="sort icon clicarMostrar"></i>
 
                                     <div class="d-none inline field listagem-usuarios" id="">
-                                        <div class="ui checkbox">
+                                        <div class="">
                                             @foreach ($usersthis as $users)
                                             <input type="checkbox" tabindex="0" class="" name="user[]" value="{{$users->id}}" >
-                                            <label for="">{{$users->name}}</label> <br>
+                                            <label for="">{{$users->name}}</label>
+                                                <br>
                                             @endforeach
                                         </div>
                                     </div>

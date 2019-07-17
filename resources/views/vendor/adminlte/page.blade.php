@@ -149,9 +149,14 @@
             <script>
                 $(function () {
 
+                    $('button.excluir').click(function () {
+                        console.log('o evento tá indo');
+                        $('.ui.basic.modal').modal('show');
+                    });
+
                     $('.ui.checkbox').checkbox();
 
-                    $('.mostrarPeriodo').hide();
+                     $('.mostrarPeriodo').hide();
                      $('.cliqueShow').click(function () {
                          $('.mostrarPeriodo').show();
                      });

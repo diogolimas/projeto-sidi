@@ -14,48 +14,72 @@
 
 @section('content')
 
-
-
-
     @if(isset($success))
         <div class="ui success message">
             <i class="close icon"></i>
             <div class="header">{{$success}} </div>
         </div>
     @endif
+       <?php
+           $usu = '';
+       ?>
 
 
 
         <table class="ui celled striped table">
             <thead>
             <tr>
-                <th>Id</th>
-                <th class="collapsing">Nome do aluno</th>
-                <th>Email</th>
-                <th>Papel</th>
-                <th>Período</th>
+                <th>
+                    Id
+                </th>
+                <th class="collapsing">
+                    Nome do aluno
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Papel
+                </th>
+                <th>
+                    Período
+                </th>
                 <th>
                     Disciplina cursando
                 </th>
+                <th>
+                    Ações
+                </th>
             </tr></thead>
             <tbody>
-            @foreach($dados as $dado)
+            @foreach($usuarios as $dado)
+
                 @if($dado->criador_id == auth()->user()->id)
                     <tr>
                         <td>{{$dado->id}}</td>
                         <td>{{$dado->name}}</td>
+
                         <td>{{$dado->email}}</td>
                         <td>{{$dado->nome}}</td>
+
                         <td>{{$dado->periodo}}</td>
                         <td>{{$dado->quantidade_disciplinas_cursando}}</td>
+                        <td>
+                            <a href="{{route('exluir-usuario',[$dado->id])}}">
+                                <i class="trash alternate outline icon"></i>
+                            </a>
+                            <a href="{{route('editar-usuario',  [$dado->id])}}"><i class="edit icon"></i></a>
+                        </td>
                     </tr>
                 @endif
             @endforeach
             </tbody>
         </table>
-    {{ $usuarios->onEachSide(2)->links() }}
-
-        
+        @if(isset($dataForm))
+            {{$usuarios->appends($dataForm)->links()}}
+        @else
+            {{$usuarios->links()}}
+        @endif
 
 
 

@@ -65,16 +65,19 @@ class registroController extends Controller
                 $insertar = User::create($usuario);
                 if($insertar){
                     $success = "usuário inserido com sucesso!";
-                    
-                    $usuarios = DB::table('users')->where('papel_id','1')->paginate(2); //Paginação
+                    return redirect()->route('listarUser', ['success' => 'usuário inserido com sucesso!']);
+                    /*
+                    $usuarios = DB::table('users')->where('papel_id','1')->paginate(2);
+
+                    $dataForm = $request->all();
 
                     $dados = DB::table('papels')
                         ->join('users', 'users.papel_id', '=', 'papels.id')
                         ->select('*')
-                        ->get();
+                        ->paginate(6);
 
-                    return view('site.home.listar', compact('dados','success','usuarios') );
-
+                    return view('site.home.listar', compact('dados','success','usuarios','dataForm') );
+                    */
                 }else{
                     return redirect()
                                     ->back();
@@ -129,8 +132,15 @@ class registroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function excluir($id){
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->back();
+
+    }
     public function destroy($id)
     {
         //
     }
+
 }

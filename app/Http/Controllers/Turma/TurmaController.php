@@ -59,23 +59,25 @@ class TurmaController extends Controller
                 ]);
             }
         }
+        $dataForm = $request->all();
 
         if($insertarTurma){
             $success = 'Turma inserida com sucesso';
-            $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(6);
+            $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(7);
             $dados = DB::table('users')
                 ->join('turmas', 'turmas.professor_id', '=', 'users.id')
                 ->select('*')
-                ->get();
+                ->paginate(7);
 
-            return view('site.home.listarTurmas', compact('success', 'dados', 'turmas'));
+            return view('site.home.listarTurmas', compact('success', 'dados', 'turmas', 'dataForm'));
         }else{
             $error = 'Turma não inserida';
+            $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(7);
             $dados = DB::table('users')
                 ->join('turmas', 'turmas.professor_id', '=', 'users.id')
                 ->select('*')
-                ->get();
-            return view('site.home.cadastrarTurma', compact('error', 'dados'));
+                ->paginate(7);
+            return view('site.home.cadastrarTurma', compact('error', 'dados','turmas','dataForm'));
         }
 
 
@@ -100,11 +102,11 @@ class TurmaController extends Controller
      */
     public function show()
     {
-        $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(6); //Paginção
+        $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(7); //Paginção
         $dados = DB::table('users')
             ->join('turmas', 'turmas.professor_id', '=', 'users.id')
             ->select('*')
-            ->get();
+            ->paginate(7);
 
         return view('site.home.listarTurmas', compact('dados', 'turmas'));
     }

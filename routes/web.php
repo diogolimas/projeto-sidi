@@ -15,6 +15,7 @@ Auth::routes();
 Route::group( ['middleware' => 'auth'], function(){
     Route::resource('/registrar', 'registroController');
     Route::get('/', 'Admin\AdminController@index')->name('home');
+
     Route::get('/usuarios', 'HomeController@listarUsuario')->name('listarUser');
 
     //referente a turmas
@@ -25,11 +26,12 @@ Route::group( ['middleware' => 'auth'], function(){
     Route::get('/turmas-editar/{turma}', 'Turma\TurmaController@edit')->name('turmas/editar');
     Route::post('/turmas-atualizar/{turma}', 'Turma\TurmaController@update')->name('turmas/update');
 
-    
-
-    //registrar usuario
+    //referente a usuarios
     Route::get('/registrar', 'registroController@index')->name('registrar');
     Route::post('/registrar/efetuar', 'registroController@store')->name('efetuarRegistro');
+    Route::get('/usuario-excluir/{aluno}','registroController@excluir')->name('exluir-usuario');
+    Route::get('/usuario-editar/{aluno}','registroController@pegarUsuario')->name('editar-usuario');
+
 
     //rotas das avaliacoes
     Route::get('avaliacoes/{turma}/', 'AvaliacaoController@index')->name('turma/avaliacoes'); 

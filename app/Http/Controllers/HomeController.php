@@ -30,16 +30,20 @@ class HomeController extends Controller
         return view('site.home.index');
     }
 
-    public function listarUsuario()
+    public function listarUsuario(Request $request)
     {
 
+        $success = $request->success;
+        $dataForm = $request->all();
         $usuarios = User::where('papel_id','1')->paginate(6); //Isso tá aqui só para a paginação
-        $dados = DB::table('papels')
+           $dados = DB::table('papels')
             ->join('users', 'users.papel_id', '=', 'papels.id')
             ->select('*')
-            ->get();
+            ->paginate(6);
 
-        return view('site.home.listar', compact('usuarios','dados'));
+
+
+        return view('site.home.listar', compact('usuarios','dados','success', 'dataForm'));
 
 
     }
