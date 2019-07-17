@@ -138,20 +138,27 @@
 
             <script>
                 $(function () {
-
+                    //js do modal do listar usuários
                     $('button.excluir').click(function (e) {
                         e.preventDefault();
                         let id = $(this).data('id');
                         let name = $(this).data('name');
+                        let action = $(this).data('action');
 
                         $('input#input-target').val(id);
                         $('#nomeUser').text(name);
+                        $('strong#action').text(action);
                         $('.ui.basic.modal').modal('show');
                     });
 
+
+
                     $('.ui.checkbox').checkbox();
 
-                     $('.mostrarPeriodo').hide();
+                    //editar usuário
+
+
+                    $('.mostrarPeriodo').hide();
                      $('.cliqueShow').click(function () {
                          $('.mostrarPeriodo').show();
                      });
@@ -161,7 +168,10 @@
                      $('.administrador').click(function () {
                         $('.mostrarPeriodo').hide();
                      });
-
+                    if( $('input.cliqueShow').is(':checked')){
+                        console.log('entrou');
+                        $('.mostrarPeriodo').show();
+                    }
                     let one = $('div.listagem-usuarios');
 
                      $('.clicarMostrar').click(function(){
@@ -170,13 +180,7 @@
 
                     function hideShow(x){
                         $(x).toggleClass('d-block').fadeIn('slow');
-                    };
-
-
-
-
-
-                    
+                    }
                 });
 
             </script>

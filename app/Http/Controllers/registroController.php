@@ -109,9 +109,20 @@ class registroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user, $id)
     {
-        dd();
+        /*
+        $thisuser = DB::table('users')
+            ->where('id',$id)
+            ->get();
+        */
+        $thisuser= $user->find($id);
+
+        $titulo_page = "Editar o usuário ".$thisuser->name;
+
+        $editar = true;
+
+        return view('site.home.editUser', compact('thisuser', 'titulo_page','editar'));
     }
 
     /**
@@ -121,9 +132,23 @@ class registroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FormUserRequest $request)
     {
-        //
+
+        $usuario = User::find($request->id);
+
+
+        if(isset($cat)) {
+            $usuario->name = $request->input('name');
+            $usuario->email = $request->input('email');
+            $usuario->email = $request->input('papel_id');
+            $usuario->email = $request->input('periodo');
+            $usuario->save();
+                return redirect ()->route('listarUser',['success' => 'usuário editado!']);
+        }else{
+            return redirect ()->route('home',['error'=>'Usuário não encontrado']);
+        }
+
     }
 
     /**

@@ -29,9 +29,11 @@ Route::group( ['middleware' => 'auth'], function(){
     //referente a usuarios
     Route::get('/registrar', 'registroController@index')->name('registrar');
     Route::post('/registrar/efetuar', 'registroController@store')->name('efetuarRegistro');
-    Route::get('/usuario-excluir/{aluno}','registroController@excluir')->name('exluir-usuario');
-    Route::get('/usuario-editar/{aluno}','registroController@edit')->name('editar-usuario');
+    Route::post('/usuario-excluir','registroController@excluir')->name('excluir-usuario');
 
+    Route::get('/usuario-editar/{aluno}','registroController@edit')->name('editar-usuario');
+    Route::get('/usuario/editar/','registroController@edit1')->name('viewEditarUser'); //rota apenas para a view editar usuário
+    Route::post('/usuario/update/','registroController@update')->name('efetuar-edit');
 
     //rotas das avaliacoes
     Route::get('avaliacoes/{turma}/', 'AvaliacaoController@index')->name('turma/avaliacoes'); 

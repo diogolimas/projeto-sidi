@@ -4,11 +4,11 @@
 
 @section('content_header')
     <h1>Listagem de usuários</h1>
-    <ol class="breadcrumb">
-            <li><a href="{{route('home')}}">Página Principal</a></li>
-            <li><a href="{{route('listarUser')}}">Usuários</a></li>
-            
-    </ol>
+    <div class="ui small breadcrumb">
+        <a class="section" href="{{route('home')}}">Página inicial</a>
+        <i class="right chevron icon divider"></i>
+        <a class="section">Listagem de usuários</a>
+    </div>
     
 @stop
 
@@ -65,11 +65,15 @@
                         <td>{{$dado->periodo}}</td>
                         <td>{{$dado->quantidade_disciplinas_cursando}}</td>
                         <td>
-                            <button data-id="{{$dado->id}}" data-name="{{$dado->name}}" class="excluir ui inverted red button">
+
+                            <a data-id="{{$dado->id}}" data-name="{{$dado->name}}" data-action="editar"
+                                    class="ui inverted yellow button" href="{{url('/usuario-editar',[$dado->id])}}">
+                                <i class="edit icon black"></i>
+                            </a>
+                            <a href="{{route('editar-usuario',  [$dado->id])}}"><i class=""></i></a>
+                            <button data-id="{{$dado->id}}" data-name="{{$dado->name}}" data-action="excluir" class="excluir ui inverted red button">
                                 <i class="trash alternate outline icon"></i>
                             </button>
-                            
-                            <a href="{{route('editar-usuario',  [$dado->id])}}"><i class="edit icon"></i></a>
                         </td>
                     </tr>
                 @endif
@@ -82,34 +86,37 @@
             {{$usuarios->links()}}
         @endif
 
+        <!--inicio do modal para exclusão-->
         <div class="ui basic modal" style="margin-top: 150px !important;">
             <div class="ui icon header">
                 <i class="archive icon"></i>
-                Deseja mesmo excluir o usuário <strong id="nomeUser"> </strong>?
+                Deseja mesmo <strong id="action"></strong> o usuário <strong id="nomeUser"> </strong>?
 
             </div>
 
-            <div class="actions">
+                <div class="actions">
+                    <!--Aqui manda o id do usuário para o controller para ser excluído-->
+                    <form action="{{route('excluir-usuario')}}" method="POST">
+                        {!! csrf_field() !!}
+                        <input class="id" type="hidden"  value="" id="input-target" name="id">
+                        <div class="ui red basic cancel inverted button">
+                            <i class="remove icon"></i>
+                            No
+                        </div>
 
-                <form action="">
-                    <input class="id" type="hidden"  value="" id="input-target">
-                    <div class="ui red basic cancel inverted button">
-                        <i class="remove icon"></i>
-                        No
+                            <button class="ui green ok inverted button" type="  submit">
+                                <i class="checkmark icon">
+
+                                </i>
+                                Yes
+                            </button>
+
+
+                    </form>
+
                     </div>
-
-                        <button class="ui green ok inverted button" type="  submit">
-                            <i class="checkmark icon">
-
-                            </i>
-                            Yes</button>
-
-
-                </form>
-
-            </div>
-        </div>
-
+                </div>
+    <!--fim do modal para exclusão-->
 
 
 
