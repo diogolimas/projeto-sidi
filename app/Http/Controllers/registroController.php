@@ -157,8 +157,8 @@ class registroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function excluir($id){
-        $user = User::find($id);
+    public function excluir(Request $request){
+        $user = User::find($request->id);
         $user->delete();
         return redirect()->back();
 

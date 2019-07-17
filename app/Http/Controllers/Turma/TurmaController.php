@@ -62,14 +62,17 @@ class TurmaController extends Controller
         $dataForm = $request->all();
 
         if($insertarTurma){
+            /*
             $success = 'Turma inserida com sucesso';
-            $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(7);
+            $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(6); //Paginção
             $dados = DB::table('users')
                 ->join('turmas', 'turmas.professor_id', '=', 'users.id')
                 ->select('*')
-                ->paginate(7);
-
+                ->paginate(6);
+            $dataForm = $request->all();
             return view('site.home.listarTurmas', compact('success', 'dados', 'turmas', 'dataForm'));
+              */
+              return redirect()->route('turmas/listar', ['success' => 'usuário inserido com sucesso!']);  
         }else{
             $error = 'Turma não inserida';
             $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(7);
@@ -77,6 +80,8 @@ class TurmaController extends Controller
                 ->join('turmas', 'turmas.professor_id', '=', 'users.id')
                 ->select('*')
                 ->paginate(7);
+            $dataForm = $request->all();
+
             return view('site.home.cadastrarTurma', compact('error', 'dados','turmas','dataForm'));
         }
 
@@ -100,15 +105,16 @@ class TurmaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Request $request)
     {
-        $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(7); //Paginção
+        $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(6); //Paginção
         $dados = DB::table('users')
             ->join('turmas', 'turmas.professor_id', '=', 'users.id')
             ->select('*')
-            ->paginate(7);
-
-        return view('site.home.listarTurmas', compact('dados', 'turmas'));
+            ->paginate(6);
+        $dataForm = $request->all();
+        $success = $request->success;
+        return view('site.home.listarTurmas', compact('dados', 'turmas','dataForm','success'));
     }
 
     /**

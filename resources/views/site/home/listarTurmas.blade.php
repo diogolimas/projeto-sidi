@@ -13,6 +13,7 @@
 
 @section('content')
     <div class="ui container">
+
         @if(isset($success))
             <div class="ui positive message">
                 <i class="close icon"></i>
@@ -69,7 +70,9 @@
                                 <a href="{{ route('turmas/editar', ['id'=>$dado->id]) }}">
                                     <i class="edit outline icon"></i>
                                 </a>
-
+                                <button data-id="{{$dado->id}}" data-name="{{$dado->name}}" data-action="excluir" class="excluir ui inverted red button">
+                                    <i class="trash alternate outline icon"></i>
+                                </button>
 
                             </td>
                         </tr>
@@ -77,7 +80,11 @@
                 @endforeach
                 </tbody>
             </table>
+        @if(isset($dataForm))
+            {{$turmas->appends($dataForm)->links()}}
+        @else
+            {{$turmas->links()}}
+        @endif
 
-            {{ $turmas->links() }}
     </div>
 @stop
