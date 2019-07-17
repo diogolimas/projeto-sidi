@@ -41,6 +41,7 @@
                     @endif
                 </div>
                 <div class="row">
+  
                     <div class="col-xs-8">
                         <div class="checkbox icheck">
                             <label>
@@ -57,7 +58,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                       <button type="submit"
-                      class="fluid ui inverted orange button">{{ trans('adminlte::adminlte.sign_in') }}
+                      class="fluid ui inverted green button">{{ trans('adminlte::adminlte.sign_in') }}
                     </button>
                     </div>
                     
@@ -84,6 +85,7 @@
                 radioClass: 'iradio_square-blue',
                 increaseArea: '20%' // optional
             });
+            $('.ui.checkbox').checkbox();
         });
     </script>
     @yield('js')

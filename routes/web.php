@@ -25,6 +25,8 @@ Route::group( ['middleware' => 'auth'], function(){
     Route::get('/turmas-editar/{turma}', 'Turma\TurmaController@edit')->name('turmas/editar');
     Route::post('/turmas-atualizar/{turma}', 'Turma\TurmaController@update')->name('turmas/update');
 
+    
+
     //registrar usuario
     Route::get('/registrar', 'registroController@index')->name('registrar');
     Route::post('/registrar/efetuar', 'registroController@store')->name('efetuarRegistro');
