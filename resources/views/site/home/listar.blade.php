@@ -65,7 +65,7 @@
                         <td>{{$dado->periodo}}</td>
                         <td>{{$dado->quantidade_disciplinas_cursando}}</td>
                         <td>
-                            <button data-id="{{$dado->id}}" class="excluir ui inverted red button">
+                            <button data-id="{{$dado->id}}" data-name="{{$dado->name}}" class="excluir ui inverted red button">
                                 <i class="trash alternate outline icon"></i>
                             </button>
                             
@@ -82,10 +82,36 @@
             {{$usuarios->links()}}
         @endif
 
+        <div class="ui basic modal" style="margin-top: 150px !important;">
+            <div class="ui icon header">
+                <i class="archive icon"></i>
+                Deseja mesmo excluir o usuário <strong id="nomeUser"> </strong>?
+
+            </div>
+
+            <div class="actions">
+
+                <form action="">
+                    <input class="id" type="hidden"  value="" id="input-target">
+                    <div class="ui red basic cancel inverted button">
+                        <i class="remove icon"></i>
+                        No
+                    </div>
+
+                        <button class="ui green ok inverted button" type="  submit">
+                            <i class="checkmark icon">
+
+                            </i>
+                            Yes</button>
+
+
+                </form>
+
+            </div>
+        </div>
 
 
 
-        <input class="id" type="hidden"  value="" id="input-target">
 
 
 

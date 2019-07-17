@@ -135,25 +135,18 @@
 
 @section('adminlte_js')
     <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
-    <script>  
-        //javascript para o registrar turmas
-            $(function() {
-                $('#listagem-usuarios').hide(); 
-                $('.click').click(function(){
-                    $('#listagem-usuarios').show();
-                });
 
-            });
-
-            </script>
             <script>
                 $(function () {
 
                     $('button.excluir').click(function (e) {
                         e.preventDefault();
                         let id = $(this).data('id');
+                        let name = $(this).data('name');
 
                         $('input#input-target').val(id);
+                        $('#nomeUser').text(name);
+                        $('.ui.basic.modal').modal('show');
                     });
 
                     $('.ui.checkbox').checkbox();
