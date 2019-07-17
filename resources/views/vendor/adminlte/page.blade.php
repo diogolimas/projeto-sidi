@@ -162,9 +162,9 @@
                         $('.mostrarPeriodo').hide();
                      });
 
-                    let one = $('div#listagem-usuarios');
+                    let one = $('div.listagem-usuarios');
 
-                     $('label#clicarMostrar').click(function(){
+                     $('.clicarMostrar').click(function(){
                          hideShow(one);
                      });
 

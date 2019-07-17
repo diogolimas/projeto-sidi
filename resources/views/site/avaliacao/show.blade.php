@@ -1,37 +1,24 @@
 
-<!--
-<ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-</ul>
-
-<div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-        <h3>HOME</h3>
-        <p>Some content.</p>
-    </div>
-    <div id="menu1" class="tab-pane fade">
-        <h3>Menu 1</h3>
-        <p>Some content in menu 1.</p>
-    </div>
-    <div id="menu2" class="tab-pane fade">
-        <h3>Menu 2</h3>
-        <p>Some content in menu 2.</p>
-    </div>
-</div>
--->
-
 @extends('adminlte::page')
 
+@section('title', 'Sidi - Registrar turma')
 
 @section('content_header')
-    <h1>Atividade - {{ $avaliacao->nome  }}</h1>
-    <ol class="breadcrumb">
-        <li><a href="{{route('home')}}">Página Principal</a></li>
-        <li><a href="{{route('turmas/listar')}}">Turmas</a></li>
-        <li><a href="{{route('turmaVerMais', ['id'=>$avaliacao->id_turma])}}">Descrição</a></li>
-    </ol>
+
+    <h1>
+        <a href="/turmas-listar/alunos/{{$avaliacao->id}}"><i class="long arrow alternate left icon"></i></a>
+        Atividade - {{ $avaliacao->nome  }}</h1>
+    <div class="ui small breadcrumb">
+        <a class="section" href="{{route('home')}}">Página inicial</a>
+        <i class="right chevron icon divider"></i>
+        <a class="section">Turmas</a>
+        <i class="right chevron icon divider"></i>
+        <a class="section">Turma</a>
+        <i class="right chevron icon divider"></i>
+        <a href="">Avaliações</a>
+        <i class="right chevron icon divider"></i>
+        <a href="">Avaliação</a>
+    </div>
 @stop
 
 @section('content')

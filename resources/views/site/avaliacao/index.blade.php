@@ -3,7 +3,10 @@
 @section('title', 'Sistema Avalitivo de Aprendizagem')
 
 @section('content_header')
-    <h1>Avaliações da turma </h1>
+    <h1>
+        <a href="/turmas-listar/alunos/"><i class="long arrow alternate left icon"></i></a>
+        Avaliações da turma
+    </h1>
 @stop
 
 @section('content')
@@ -21,18 +24,13 @@
                             <h2>{{ $av->nome }}</h2>
                             <div class="ui divider"></div>
                             {{ $av->descricao }}
-
                         </div>
                     </a>
-
                 @endforeach
         @else
-
             <div class="ui segment">
                 <p>Nenhuma avaliação foi dada para esta turma</p>
                 <div class="ui divider"></div>
-
-
         @endif
     </div>
 

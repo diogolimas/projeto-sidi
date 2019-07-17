@@ -39,17 +39,12 @@
                                     placeholder="Digite o código da turma">
                             </div>
                             <div>
-                                <div class="ui form">
-                                    <div class="inline field">
-                                        <div class="ui checkbox">
-                                            <input type="checkbox" tabindex="0" class="hidden">
-                                            <label>Checkbox</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <label id="clicarMostrar" title="Clique para mostrar" class="click h3" for="">Listagem de usuários para adicionar </label>
-                                <i class="click"  class="fas fa-sort-down"></i>
-                                <div id="listagem-usuarios" class="d-none">
+
+                                <label id="" title="Clique para mostrar" class="clicarMostrar click h3" for="">Listagem de usuários para adicionar </label>
+                                <i class="sort icon clicarMostrar" ></i>
+                                <div id="" class="d-none listagem-usuarios">
+                                    @if(isset($usersthis, $alunos))
+
                                     @foreach ($usersthis as $users)
                                         @if (in_array($users->id, $alunos))
                                             <input type="checkbox" name="user[]"  value="{{$users->id}}" checked >
@@ -59,11 +54,17 @@
                                             <label for="">{{$users->name}}</label> <br>
                                         @endif
                                     @endforeach
+                                    @else
+                                        @foreach($usersthis as $users)
+                                            <input type="checkbox" name="user[]"  value="{{$users->id}}" >
+                                            <label for="">{{$users->name}}</label> <br>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                             
 
-                            <button type="submit" class="ui inverted orange button btn-lg btn-block">
+                            <button type="submit" class="ui inverted green button btn-lg btn-block">
                             Editar
                             </button>
                             

@@ -5,7 +5,10 @@
 )
 
 @section('content_header')
-    <h1>Descrição da turma</h1>
+    <h1>
+        <a href="/turmas-listar"><i class="long arrow alternate left icon"></i></a>
+        Descrição da turma
+    </h1>
     <ol class="breadcrumb">
             <li><a href="{{route('home')}}">Página Principal</a></li>
             <li><a href="{{route('turmas/listar')}}">Turmas</a></li>
@@ -19,8 +22,7 @@
                 <h2 class="ui right floated header">
                     @forelse ($classroom as $item)
                         {{$item->disciplina}}
-                        -
-                        {{$item->codigo}}
+
                     @empty
                         
                     @endforelse

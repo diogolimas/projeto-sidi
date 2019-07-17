@@ -61,22 +61,20 @@
                             </div>
                             <div>
 
-                                <div class="ui form">
-                                    <div class="inline field">
+
+
+                                <label id="" title="Clique para mostrar" class="clicarMostrar click h3" for="">Listagem de usuários para adicionar </label>
+                                <i class="sort icon clicarMostrar"></i>
+
+                                    <div class="d-none inline field listagem-usuarios" id="">
                                         <div class="ui checkbox">
-                                            <input type="checkbox" tabindex="0" class="hidden">
-                                            <label>Checkbox</label>
+                                            @foreach ($usersthis as $users)
+                                            <input type="checkbox" tabindex="0" class="" name="user[]" value="{{$users->id}}" >
+                                            <label for="">{{$users->name}}</label> <br>
+                                            @endforeach
                                         </div>
                                     </div>
-                                </div>
-                                <label id="clicarMostrar" title="Clique para mostrar" class="click h3" for="">Listagem de usuários para adicionar </label>
-                                <i class="click"  class="fas fa-sort-down"></i>
-                                <div id="listagem-usuarios" class="d-none">
-                                    @foreach ($usersthis as $users)
-                                        <input type="checkbox" name="user[]"  value="{{$users->id}}" >
-                                            <label for="">{{$users->name}}</label> <br>
-                                    @endforeach
-                                </div>
+
                             </div>
 
                             <button type="submit" class="ui inverted green button btn-lg btn-block">

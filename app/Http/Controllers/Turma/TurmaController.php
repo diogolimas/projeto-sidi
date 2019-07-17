@@ -118,6 +118,7 @@ class TurmaController extends Controller
     public function edit($id)
     {
         $cat = Turma::find($id);
+
         //'<pre>' . var_dump($cat) . '</pre>';
 
         $dados = DB::table('users')
@@ -133,13 +134,19 @@ class TurmaController extends Controller
             }
         }
 
-        $usersthis = User::where('criador_id', auth()->user()->id)->get();
+        $usersthis = DB::table('users')
+            ->where('criador_id',auth()->user()->id)
+            ->get();
+
+        //$usersthis = User::where('criador_id', auth()->user()->id);
+
 
         if(isset($cat)) {
             if(isset($alunos)) {
                 return view('site.home.editarTurma', compact('cat', 'usersthis', 'alunos'));
             }else{
-                return view('site.home.editarTurma', compact('cat', 'usersthis'));
+
+                return view('site.home.editarTurma', compact('cat', 'usersthis' ));
             }
         }
         echo "Essa turma não existe";
