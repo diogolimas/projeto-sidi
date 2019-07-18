@@ -72,7 +72,7 @@
 
                             <a data-id="{{$dado->id}}" data-name="{{$dado->name}}" data-action="editar"
                                     class="ui inverted yellow button" href="{{url('/usuario-editar',[$dado->id])}}">
-                                <i class="edit icon black"></i>
+                                <i class="edit icon "></i>
                             </a>
                             <a href="{{route('editar-usuario',  [$dado->id])}}"><i class=""></i></a>
                             <button data-id="{{$dado->id}}" data-name="{{$dado->name}}" data-action="excluir" class="excluir ui inverted red button">

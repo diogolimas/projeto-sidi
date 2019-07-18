@@ -67,10 +67,10 @@
 
                             </td>
                             <td>
-                                <a href="{{ route('turmas/editar', ['id'=>$dado->id]) }}">
+                                <a class="ui inverted yellow button" href="{{ route('turmas/editar', ['id'=>$dado->id]) }}">
                                     <i class="edit outline icon"></i>
                                 </a>
-                                <button data-id="{{$dado->id}}" data-name="{{$dado->name}}" data-action="excluir" class="excluir ui inverted red button">
+                                <button data-id="{{$dado->id}}" data-name="{{$dado->disciplina}}" data-action="excluir" class="excluir ui inverted red button">
                                     <i class="trash alternate outline icon"></i>
                                 </button>
 
@@ -87,4 +87,39 @@
         @endif
 
     </div>
+
+        <!--inicio do modal para exclusão-->
+        <div class="ui basic modal" style="margin-top: 150px !important;">
+                <div class="ui icon header">
+                    <i class="archive icon"></i>
+                    Deseja mesmo <strong id="action"></strong>a turma <strong id="nomeUser"> </strong>?
+    
+                </div>
+    
+                    <div class="actions">
+                        <!--Aqui manda o id do usuário para o controller para ser excluído-->
+                        <form action="{{route('excluir/turmas')}}" method="POST">
+                            {!! csrf_field() !!}
+                            <input class="id" type="hidden"  value="" id="input-target" name="id">
+                            <div class="ui red basic cancel inverted button">
+                                <i class="remove icon"></i>
+                                No
+                            </div>
+    
+                                <button class="ui green ok inverted button" type="submit">
+                                    <i class="checkmark icon">
+    
+                                    </i>
+                                    Yes
+                                </button>
+    
+    
+                        </form>
+    
+                        </div>
+                    </div>
+        <!--fim do modal para exclusão-->
+    
+
+
 @stop

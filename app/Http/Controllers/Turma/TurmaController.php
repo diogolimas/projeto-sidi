@@ -72,7 +72,7 @@ class TurmaController extends Controller
             $dataForm = $request->all();
             return view('site.home.listarTurmas', compact('success', 'dados', 'turmas', 'dataForm'));
               */
-              return redirect()->route('turmas/listar', ['success' => 'usuário inserido com sucesso!']);  
+              return redirect()->route('turmas/listar', ['success' => 'Turma inserida com sucesso!']);  
         }else{
             $error = 'Turma não inserida';
             $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(7);
@@ -114,6 +114,7 @@ class TurmaController extends Controller
             ->paginate(6);
         $dataForm = $request->all();
         $success = $request->success;
+        
         return view('site.home.listarTurmas', compact('dados', 'turmas','dataForm','success'));
     }
 
@@ -209,9 +210,16 @@ class TurmaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        //controller para excluir uma turma
+        $turma = Turma::find($request->id);
+        if(isset($turma)){
+            $turma->delete();
+            return redirect()->route('turmas/listar', ['success' => 'Turma excluída com sucesso!']);
+        }else{
+            return redirect()->route('turmas/listar',['error'=>'Essa turma não existe']);
+        }
     }
 
     public function alunos($id, Turma $turma)
