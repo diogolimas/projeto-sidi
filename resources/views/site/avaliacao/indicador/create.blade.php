@@ -34,14 +34,17 @@
                         @csrf
 
                         <input type="hidden" name="id" value="{{ $turma->id }}">
-                        <div class="form-group">
-                            <textarea class="form-control" name="descricao_indicador" placeholder="Descricao do indicador" required></textarea>
+                        <div class="ui form">
+                            <div class="field d-block mb-2">
+                                <textarea rows="2" class="form-control" name="descricao_indicador" placeholder="Descricao do indicador"
+                                 required></textarea>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="nota_maxima" placeholder="Nota máxima" required>
+                        <div class="ui input d-block mb-2">
+                            <input class="form-control" type="number" name="nota_maxima" placeholder="Nota máxima" required>
                         </div>
-                        <div class="form-group">
-                            <button class="form-control btn btn-warning" type="submit">Cadastrar indicador</button>
+                        <div class="d-block">
+                            <button class="ui inverted green button form-control" type="submit">Cadastrar indicador</button>
                         </div>
                     </form>
 

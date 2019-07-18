@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Avaliacao;
 use App\Models\Indicador;
 use App\Models\Turma;
+use App\Models\Aluno_indicador;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -98,6 +99,9 @@ class IndicadorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+    }
+    public function atribuirNota(){
+
     }
 }

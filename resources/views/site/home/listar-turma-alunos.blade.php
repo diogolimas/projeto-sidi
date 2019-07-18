@@ -72,7 +72,7 @@
                     <td>
                         {{$usuario->id}}
                     </td>
-                    <td>
+                    <td class="" width="250px">
                         {{$usuario->name}}
                     </td>
                     <td>

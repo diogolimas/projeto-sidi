@@ -16,7 +16,9 @@ class CreateIndicadorsTable extends Migration
         Schema::create('indicadors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_avaliacao');
+            
             $table->foreign('id_avaliacao')->references('id')->on('avaliacaos')->onDelete('cascade');
+
             $table->string('descricao_indicador', 200);
             $table->float('nota_maxima')->nullable();
             $table->timestamps();

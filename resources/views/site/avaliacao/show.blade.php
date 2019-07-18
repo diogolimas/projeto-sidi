@@ -37,7 +37,9 @@
             </p>
         </div>
         <div class="ui bottom attached tab segment" data-tab="second">
-            <a class="ui inverted green button text-black" href="{{route('indicador/registrar', ['avaliacao' => $avaliacao->id])}}">Registrar indicador</a>
+            <a class="ui inverted green button text-black" 
+            href="{{route('indicador/registrar', ['avaliacao' => $avaliacao->id])}}">Registrar indicador
+        </a>
             <div>
                 <table class="ui celled striped table mt-3">
                     <thead>
@@ -56,6 +58,7 @@
                 </table>
             </div>
         </div>
+        <!--NOTAS -->
         <div class="ui bottom attached tab segment " data-tab="third">
                 <table class="ui celled striped table mt-3">
                         <thead>
@@ -64,15 +67,33 @@
                                 @foreach($indicadores as $indicador)
                                     <th>{{$indicador->descricao_indicador}} (0 - {{$indicador->nota_maxima}})</th>
                                 @endforeach
+                                
                                 <th>Nota final</th>
-                            </tr></thead>
+                            </tr>
+                        </thead>
                             <tbody>
                             @foreach($alunos as $aluno)
                                 <tr>
-                                    <td>{{$aluno->name}}</td>
+                                    <td width="200px">
+                                        {{$aluno->name}}
+                                    </td>
                                     @foreach($indicadores as $indicador)
-                                        <td> <input type="number" max="{{ $indicador->nota_maxima }}"> </td>
+                                                <td width="50px">
+                                                    <form action="" method="POST">
+                                                        {!!csrf_field()!!}
+                                                    <div class="ui input">
+                                                    <input class="" type="number" max="{{ $indicador->nota_maxima }}"
+                                                     name="{{$indicador->id}}">
+                                                    </div> 
+                                                    <button type="submit" 
+                                                    class="ui inverted green button">
+                                                        <i class="sync icon"></i>
+                                                    </button>
+                                                </td>
+                                            </form>
                                     @endforeach
+                                    
+                                        
                                     <td><label for="">Opa</label></td>
                                 </tr>
                             @endforeach
