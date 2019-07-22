@@ -16,13 +16,12 @@ class CreateAlunoIndicadorsTable extends Migration
         Schema::create('aluno_indicadors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_aluno');
-            $table->unsignedBigInteger('id_avaliacao');
+            $table->unsignedBigInteger('id_indicador');
 
             $table->foreign('id_aluno')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_avaliacao')->references('id')->on('avaliacaos')->onDelete('cascade');
+            $table->foreign('id_indicador')->references('id')->on('indicadors')->onDelete('cascade');
             
-            $table->float('nota')->default(0);
-            $table->timestamps();
+            $table->float('nota_indicador')->default(0);
         });
     }
 

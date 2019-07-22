@@ -46,8 +46,15 @@ class AvaliacaoController extends Controller
     public function show($id)
     {
         $avaliacao = Avaliacao::find($id);
-        $indicadores = Indicador::where('id_avaliacao', $id)->get();
-
+        $indicadores1 = Indicador::where('id_avaliacao', $id)->get();
+        $indicadores = DB::table('users')
+            ->join('aluno_indicadors', 'users.id', '=', 'aluno_indicadors.id_aluno')
+            ->join('indicadors', 'aluno_indicadors.id_indicador', '=', 'indicadors.id')
+            ->where('id_avaliacao', $id)
+            ->select('*')
+            ->orderBy('users.id')
+            ->orderBy('aluno_indicadors.id_indicador')
+            ->get();
 
         $alunos = DB::table('users')
             ->join('aluno_turmas', 'users.id', '=', 'aluno_turmas.id_user')
@@ -55,7 +62,7 @@ class AvaliacaoController extends Controller
             ->select('*')
             ->get();
 
-        return view('site.avaliacao.show', compact('avaliacao', 'indicadores', 'alunos'));
+        return view('site.avaliacao.show', compact('avaliacao', 'indicadores', 'alunos', 'indicadores1'));
     }
 
     public function edit($id)

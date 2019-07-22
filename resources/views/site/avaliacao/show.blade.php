@@ -48,10 +48,10 @@
                         <th>Descrição do Indicador</th>
                     </tr></thead>
                     <tbody>
-                        @foreach($indicadores as $indicador)
+                        @foreach($indicadores1 as $indicador1)
                             <tr>
-                                <td>{{$indicador->nota_maxima}}</td>
-                                <td>{{$indicador->descricao_indicador}}</td>
+                                <td>{{$indicador1->nota_maxima}}</td>
+                                <td>{{$indicador1->descricao_indicador}}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -64,39 +64,40 @@
                         <thead>
                             <tr>
                                 <th class="collapsing">Aluno</th>
-                                @foreach($indicadores as $indicador)
-                                    <th>{{$indicador->descricao_indicador}} (0 - {{$indicador->nota_maxima}})</th>
+                                @foreach($indicadores1 as $indicador1)
+                                    <th>{{$indicador1->descricao_indicador}} (0 - {{$indicador1->nota_maxima}})</th>
                                 @endforeach
                                 
                                 <th>Nota final</th>
                             </tr>
                         </thead>
                             <tbody>
+                            <form action="{{route('atribuir-nota', ['avaliacao' => $avaliacao->id])}}" method="POST">
                             @foreach($alunos as $aluno)
                                 <tr>
                                     <td width="200px">
                                         {{$aluno->name}}
                                     </td>
                                     @foreach($indicadores as $indicador)
+                                        @if($indicador->id_aluno == $aluno->id_user)
                                                 <td width="50px">
-                                                    <form action="" method="POST">
                                                         {!!csrf_field()!!}
                                                     <div class="ui input">
                                                     <input class="" type="number" max="{{ $indicador->nota_maxima }}"
-                                                     name="{{$indicador->id}}">
-                                                    </div> 
-                                                    <button type="submit" 
-                                                    class="ui inverted green button">
-                                                        <i class="sync icon"></i>
-                                                    </button>
+                                                     name="notas[]" value="{{$indicador->nota_indicador}}">
+                                                    </div>
                                                 </td>
-                                            </form>
+                                        @endif
                                     @endforeach
-                                    
                                         
                                     <td><label for="">Opa</label></td>
                                 </tr>
                             @endforeach
+                            <button type="submit"
+                                    class="ui inverted green button">
+                                <i class="sync icon"></i>
+                            </button>
+                            </form>
                             </tbody>
                     </table>
         </div>

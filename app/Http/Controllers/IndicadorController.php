@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aluno_turma;
 use App\Models\Avaliacao;
 use App\Models\Indicador;
 use App\Models\Turma;
@@ -45,13 +46,23 @@ class IndicadorController extends Controller
      */
     public function store(Request $request, $avaliacao)
     {
+        $alunos = Aluno_turma::where('id_turma', $avaliacao)->get();
+
         $form = [
             'id_avaliacao' => $avaliacao,
             'descricao_indicador' => $request->input('descricao_indicador'),
             'nota_maxima'         => $request->input('nota_maxima'),
         ];
 
-        Indicador::create($form);
+        $indicador = Indicador::create($form);
+
+        foreach ($alunos as $aluno) {
+            Aluno_indicador::insert([
+                'id_aluno'       => $aluno->id_user,
+                'id_indicador'   => $indicador->id,
+                'nota_indicador' => 0
+            ]);
+        }
 
         $id = Avaliacao::find($avaliacao)->id_turma;
         return redirect(route('turma/verAvaliacao', ['id' => $avaliacao]));
@@ -101,7 +112,23 @@ class IndicadorController extends Controller
     {
         
     }
-    public function atribuirNota(){
+    public function atribuirNota(Request $request, $avaliacao){
+        $atividade = Avaliacao::find($avaliacao);
+        $indicadores = Indicador::where('id_avaliacao', $avaliacao)->get();
+        $alunos = DB::table('users')
+            ->join('aluno_turmas', 'users.id', '=', 'aluno_turmas.id_user')
+            ->where('id_turma', $atividade->id_turma)
+            ->select('*')
+            ->get();
 
+        $contador = 0;
+        foreach ($alunos as $aluno){
+            foreach ($indicadores as $indicador){
+                Aluno_indicador::where('id_aluno', $aluno->id_user)->where('id_indicador', $indicador->id)->update(['nota_indicador' => $request->notas[$contador]]);
+                $contador += 1;
+            }
+        }
+
+        return redirect(route('turma/verAvaliacao', ['id' => $avaliacao]));
     }
 }

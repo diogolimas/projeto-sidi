@@ -45,6 +45,7 @@ Route::group( ['middleware' => 'auth'], function(){
     Route::get('indicador/registrar/{avaliacao}/', 'IndicadorController@create')->name('indicador/registrar');
     Route::post('indicador/{avaliacao}/registrar/', 'IndicadorController@store')->name('indicador/efetuar');
     Route::get('indicador/{indicador}/', 'IndicadorController@index')->name('indicador/mostrar');
+    Route::post('indicador/{avaliacao}/notas/', 'IndicadorController@atribuirNota')->name('atribuir-nota');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
