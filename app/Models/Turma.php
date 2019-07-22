@@ -8,6 +8,6 @@ class Turma extends Model
 {
 
     protected $fillable = [
-        'disciplina', 'codigo', 'professor_id'
+        'disciplina',  'professor_id'
     ];
 }

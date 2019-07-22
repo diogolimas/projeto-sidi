@@ -25,15 +25,15 @@ class FormCadastroTurmas extends FormRequest
     {
         return [
             'disciplina'    =>  'required',
-            'codigo'        =>  'required|numeric|min:100',
+
         ];
     }
     public function messages()
     {
         return [
             'disciplina.required'     => 'O campo disciplina é de preenchimento obrigatório',
-            'codigo.required'     => 'O campo código é de preenchimento obrigatório',
-            'codigo.numeric'    =>  'O campo código deve ser numérico'
+
+
         ];
     }
 }

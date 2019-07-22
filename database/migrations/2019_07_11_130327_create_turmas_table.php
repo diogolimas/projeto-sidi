@@ -17,7 +17,7 @@ class CreateTurmasTable extends Migration
 
             $table->bigIncrements('id');
             $table->string('disciplina', 60);
-            $table->string('codigo', 10)->unique();
+
 
             $table->unsignedBigInteger('professor_id');
             $table->foreign('professor_id')->references('id')->on('users')->onDelete('cascade');

@@ -34,10 +34,7 @@
                                     placeholder="Digite o nome da disciplina">
                                 
                             </div>
-                            <div class="ui input d-block mb-2 has-feedback ">
-                                <input type="text" name="codigo" class="form-control" value="{{ $cat->codigo }}"
-                                    placeholder="Digite o código da turma">
-                            </div>
+
                             <div>
 
                                 <label id="" title="Clique para mostrar" class="clicarMostrar click h3" for="">Listagem de usuários para adicionar </label>

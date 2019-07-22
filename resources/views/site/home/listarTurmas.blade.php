@@ -34,7 +34,7 @@
                 <tr>
                     <th>Id</th>
                     <th class="collapsing">Nome da disciplina</th>
-                    <th>Código</th>
+
                     <th>Professor</th>
                     <th >
                         <i class="info circle icon"></i>
@@ -54,9 +54,7 @@
                             <td>
                                 {{$dado->disciplina}}
                             </td>
-                            <td>
-                                {{$dado->codigo}}
-                            </td>
+
                             <td>
 
                                 {{$dado->name}}
