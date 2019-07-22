@@ -52,13 +52,7 @@
                                     <div class="ui red message">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="ui input d-block mb-2 has-feedback ">
-                                <input type="text" name="codigo" class="form-control" value="{{ old('codigo') }}"
-                                    placeholder="Digite o código da turma">
-                                @error('codigo')
-                                    <div class="ui red message">{{ $message }}</div>
-                                @enderror
-                            </div>
+
                             <div>
 
 
