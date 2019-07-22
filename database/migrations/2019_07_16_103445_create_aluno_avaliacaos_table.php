@@ -15,7 +15,13 @@ class CreateAlunoAvaliacaosTable extends Migration
     {
         Schema::create('aluno_avaliacaos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->unsignedBigInteger('id_aluno');
+            $table->unsignedBigInteger('id_avaliacao');
+
+            $table->foreign('id_aluno')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_avaliacao')->references('id')->on('avaliacaos')->onDelete('cascade');
+
+            $table->float('nota_avaliacao')->default(0);
         });
     }
 

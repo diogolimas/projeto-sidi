@@ -73,7 +73,7 @@
                         </thead>
                             <tbody>
                             <form action="{{route('atribuir-nota', ['avaliacao' => $avaliacao->id])}}" method="POST">
-                            @foreach($alunos as $aluno)
+                            @foreach($alunos as $aluno_index => $aluno)
                                 <tr>
                                     <td width="200px">
                                         {{$aluno->name}}
@@ -89,8 +89,12 @@
                                                 </td>
                                         @endif
                                     @endforeach
-                                        
-                                    <td><label for="">Opa</label></td>
+
+                                    @if(isset($nota_avaliacao))
+                                        <td><label for="">{{$nota_avaliacao[$aluno_index]->nota_avaliacao}}</label></td>
+                                    @else
+                                        <td><label for="">0</label></td>
+                                    @endif
                                 </tr>
                             @endforeach
                             <button type="submit"

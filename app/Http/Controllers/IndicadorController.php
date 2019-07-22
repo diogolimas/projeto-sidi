@@ -9,6 +9,7 @@ use App\Models\Turma;
 use App\Models\Aluno_indicador;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Aluno_avaliacao;
 
 class IndicadorController extends Controller
 {
@@ -120,6 +121,20 @@ class IndicadorController extends Controller
             ->where('id_turma', $atividade->id_turma)
             ->select('*')
             ->get();
+
+        $contador1 = 0;
+        $contador2 = 0;
+        foreach ($alunos as $aluno){
+            $nota_avaliacao[$contador1] = 0;
+            foreach ($indicadores as $indicador){
+                $nota_avaliacao[$contador1] += $request->notas[$contador2];
+                $contador2 += 1;
+            }
+            Aluno_avaliacao::where('id_aluno', $aluno->id)->where('id_avaliacao', $avaliacao)->update([
+                'nota_avaliacao' => $nota_avaliacao[$contador1]
+            ]);
+            $contador1 += 1;
+        }
 
         $contador = 0;
         foreach ($alunos as $aluno){

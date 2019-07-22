@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 use App\Models\Avaliacao;
 use App\Models\Turma;
 use App\User;
-
+use App\Models\Aluno_avaliacao;
 use App\Http\Controllers\IndicadorController;
 use Illuminate\Support\Facades\DB;
+
 
 
 class AvaliacaoController extends Controller
@@ -39,6 +40,19 @@ class AvaliacaoController extends Controller
             $avaliacao->id_turma = $request->input('id');
             $avaliacao->save();
 
+            $alunos = DB::table('users')
+                ->join('aluno_turmas', 'users.id', '=', 'aluno_turmas.id_user')
+                ->where('id_turma', $avaliacao->id_turma)
+                ->select('*')
+                ->get();
+
+            foreach ($alunos as $aluno){
+                Aluno_avaliacao::insert([
+                    'id_aluno'      => $aluno->id,
+                    'id_avaliacao'  => $avaliacao->id,
+                ]);
+            }
+
             return redirect('avaliacoes/' . $request->input('id') );
         }
     }
@@ -56,13 +70,15 @@ class AvaliacaoController extends Controller
             ->orderBy('aluno_indicadors.id_indicador')
             ->get();
 
+        $nota_avaliacao = Aluno_avaliacao::where('id_avaliacao', $id)->get();
+
         $alunos = DB::table('users')
             ->join('aluno_turmas', 'users.id', '=', 'aluno_turmas.id_user')
             ->where('id_turma', $avaliacao->id_turma)
             ->select('*')
             ->get();
 
-        return view('site.avaliacao.show', compact('avaliacao', 'indicadores', 'alunos', 'indicadores1'));
+        return view('site.avaliacao.show', compact('avaliacao', 'indicadores', 'alunos', 'indicadores1', 'nota_avaliacao'));
     }
 
     public function edit($id)
