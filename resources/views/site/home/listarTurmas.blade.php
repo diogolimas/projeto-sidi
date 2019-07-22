@@ -65,10 +65,10 @@
 
                             </td>
                             <td>
-                                <a class="ui inverted yellow button" href="{{ route('turmas/editar', ['id'=>$dado->id]) }}">
+                                <a style="width: 51px;" class="ui inverted yellow button" href="{{ route('turmas/editar', ['id'=>$dado->id]) }}">
                                     <i class="edit outline icon"></i>
                                 </a>
-                                <button data-id="{{$dado->id}}" data-name="{{$dado->disciplina}}" data-action="excluir" class="excluir ui inverted red button">
+                                <button style="width: 51px;" data-id="{{$dado->id}}" data-name="{{$dado->disciplina}}" data-action="excluir" class="excluir ui inverted red button">
                                     <i class="trash alternate outline icon"></i>
                                 </button>
 
@@ -90,7 +90,7 @@
         <div class="ui basic modal" style="margin-top: 150px !important;">
                 <div class="ui icon header">
                     <i class="archive icon"></i>
-                    Deseja mesmo <strong id="action"></strong>a turma <strong id="nomeUser"> </strong>?
+                    Deseja mesmo <strong id="action"></strong> a turma <strong id="nomeUser"> </strong>?
     
                 </div>
     

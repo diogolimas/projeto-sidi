@@ -182,7 +182,7 @@ class TurmaController extends Controller
        
         if(isset($cat)) {
             $cat->disciplina = $request->input('disciplina');
-            $cat->codigo = $request->input('codigo');
+
             $cat->save();
         }
 

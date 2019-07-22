@@ -77,7 +77,7 @@ class IndicadorController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -109,9 +109,12 @@ class IndicadorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        
+
+        $indicador = Indicador::find($request->id);
+        $indicador->delete();
+        return redirect()->route('', ['succes' => 'Indicador retirado!'])
     }
     public function atribuirNota(Request $request, $avaliacao){
         $atividade = Avaliacao::find($avaliacao);

@@ -37,21 +37,34 @@
             </p>
         </div>
         <div class="ui bottom attached tab segment" data-tab="second">
-            <a class="ui inverted green button text-black" 
+
+
+
+
+            <a class="ui inverted green button text-black"
             href="{{route('indicador/registrar', ['avaliacao' => $avaliacao->id])}}">Registrar indicador
-        </a>
+            </a>
             <div>
                 <table class="ui celled striped table mt-3">
                     <thead>
                     <tr>
                         <th class="collapsing">Nota máxima</th>
                         <th>Descrição do Indicador</th>
+                        <th>Ações</th>
                     </tr></thead>
                     <tbody>
                         @foreach($indicadores1 as $indicador1)
                             <tr>
                                 <td>{{$indicador1->nota_maxima}}</td>
                                 <td>{{$indicador1->descricao_indicador}}</td>
+                                <td>
+                                    <a style="width: 51px;" class="ui inverted yellow button" href="{{ route('turmas/editar', ['id'=>$indicador1->id]) }}">
+                                        <i class="edit outline icon"></i>
+                                    </a>
+                                    <button style="width: 51px;" data-id="{{$indicador1->id}}" data-name="{{$indicador1->descricao_indicador}}" data-action="excluir" class="excluir ui inverted red button">
+                                        <i class="trash alternate outline icon"></i>
+                                    </button>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -115,6 +128,40 @@
             $('.menu .item').tab();
         };
     </script>
+
+    <!--inicio do modal para exclusão-->
+    <div class="ui basic modal" style="margin-top: 150px !important;">
+        <div class="ui icon header">
+            <i class="archive icon"></i>
+            Deseja mesmo <strong id="action"></strong> o indicador <strong id="nomeUser"> </strong>?
+
+        </div>
+
+        <div class="actions">
+            <!--Aqui manda o id do usuário para o controller para ser excluído-->
+            <form action="{{route('indicador/destroy')}}" method="POST">
+                {!! csrf_field() !!}
+                <input class="id" type="hidden"  value="" id="input-target" name="id">
+                <div class="ui red basic cancel inverted button">
+                    <i class="remove icon"></i>
+                    No
+                </div>
+
+                <button class="ui green ok inverted button" type="submit">
+                    <i class="checkmark icon">
+
+                    </i>
+                    Yes
+                </button>
+
+
+            </form>
+
+        </div>
+    </div>
+    <!--fim do modal para exclusão-->
+
+
 
 @stop
 

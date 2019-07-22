@@ -2,7 +2,7 @@
 
 
 @section('content_header')
-    <h1>Cadastrar nova avaliação para a turma {{$turma->codigo}}</h1>
+    <h1>Cadastrar nova avaliação para a turma {{$turma->disciplina}}</h1>
     <ol class="breadcrumb">
             <li><a href="{{route('home')}}">Página Principal</a></li>
             <li><a href="{{route('turmas/listar')}}">Turmas</a></li>

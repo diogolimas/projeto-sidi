@@ -1,10 +1,14 @@
 @extends('adminlte::page')
 
-@section('title', 'Sistema Avalitivo de Aprendizagem')
+@section('title', 'Avaliações - SIDI')
 
 @section('content_header')
     <h1>
-        <a href="/turmas-listar/alunos/"><i class="long arrow alternate left icon"></i></a>
+        <a href="{{url('/turmas-listar/alunos',['id'=>$id])}}">
+            <i class="long arrow alternate left icon">
+
+            </i>
+        </a>
         Avaliações da turma
     </h1>
 @stop
