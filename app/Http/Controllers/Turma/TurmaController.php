@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Turma;
 
 use App\Http\Requests\FormCadastroTurmas;
+use App\Models\Aluno_avaliacao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Papel;
 use App\Models\Aluno_turma;
+use App\Models\Avaliacao;
 
 use App\Models\Turma;
 
@@ -224,29 +226,18 @@ class TurmaController extends Controller
 
     public function alunos($id, Turma $turma)
     {
-        
-        $id_alunos = Aluno_turma::where('id_turma', $id)->get();
-        $classroom = Turma::where('id', $id)->get();
-        foreach ($classroom as $value) {
-            $professor = User::where('id', $value->professor_id)->get();
-            $nomeDisciplina = $value->disciplina;
-            
-        }
-        $alunos = User::all();
+        $classroom = Turma::find($id);
+        $professor = User::find($classroom->professor_id);
 
+        $nomeDisciplina = $classroom->disciplina;
+        $usuarios = DB::table('users')
+            ->join('aluno_turmas', 'aluno_turmas.id_user', '=', 'users.id')
+            ->where('id_turma', $id)
+            ->select('*')
+            ->get();
 
-            foreach ($id_alunos as $id_aluno){
-                foreach ($alunos as $aluno){
-                    if($aluno->id == $id_aluno->id_user){
-                        $usuarios[] = User::find($aluno->id);
-                    }
-                }
-            }
+        $avaliacoes = Avaliacao::where('id_turma' , $id)->get();
 
-        if(isset($usuarios)){
             return view('site.home.listar-turma-alunos', compact('usuarios','classroom', 'professor','nomeDisciplina', 'id'));
-        }else{
-            return view('site.home.listar-turma-alunos', compact('classroom', 'professor','nomeDisciplina', 'id'));
-        }
     }
 }

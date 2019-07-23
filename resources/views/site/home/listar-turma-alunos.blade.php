@@ -20,23 +20,14 @@
         <div class="ui container">
             <div class="ui segment">
                 <h2 class="ui right floated header">
-                    @forelse ($classroom as $item)
-                        {{$item->disciplina}}
-
-                    @empty
-                        
-                    @endforelse
+                        {{$classroom->disciplina}}
                 </h2>
                     <div class="ui clearing divider"></div>
                 <p>
                     <div class="ui grid">
                         <div class="four wide column">
                             <strong class="ui left floated">
-                                @forelse ($professor as $item)
-                                    {{$item->name}}
-                                @empty
-
-                                @endforelse
+                                    {{$professor->name}}
                             </strong> - Professor Principal
                         </div>
                         <div class="four wide column">
@@ -64,6 +55,7 @@
                 <th>Email</th>
                 <th>Período</th>
                 <th>Disciplinas cursando</th>
+                <th>Nota</th>
             </tr></thead>
             <tbody>
             @if(isset($usuarios))
@@ -83,6 +75,9 @@
                     </td>
                     <td>
                         {{$usuario->quantidade_disciplinas_cursando}}
+                    </td>
+                    <td>
+{{--                        {{nota}}--}}
                     </td>
                 </tr>
             @endforeach

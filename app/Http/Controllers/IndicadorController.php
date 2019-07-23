@@ -47,7 +47,8 @@ class IndicadorController extends Controller
      */
     public function store(Request $request, $avaliacao)
     {
-        $alunos = Aluno_turma::where('id_turma', $avaliacao)->get();
+        $id = Avaliacao::find($avaliacao)->id_turma;
+        $alunos = Aluno_turma::where('id_turma', $id)->get();
 
         $form = [
             'id_avaliacao' => $avaliacao,
@@ -65,7 +66,6 @@ class IndicadorController extends Controller
             ]);
         }
 
-        $id = Avaliacao::find($avaliacao)->id_turma;
         return redirect(route('turma/verAvaliacao', ['id' => $avaliacao]));
     }
 
@@ -114,7 +114,7 @@ class IndicadorController extends Controller
 
         $indicador = Indicador::find($request->id);
         $indicador->delete();
-        return redirect()->route('', ['succes' => 'Indicador retirado!'])
+        return redirect()->route('', ['succes' => 'Indicador retirado!']);
     }
     public function atribuirNota(Request $request, $avaliacao){
         $atividade = Avaliacao::find($avaliacao);
