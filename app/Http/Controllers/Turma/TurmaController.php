@@ -228,15 +228,12 @@ class TurmaController extends Controller
     {
         $classroom = Turma::find($id);
         $professor = User::find($classroom->professor_id);
-
         $nomeDisciplina = $classroom->disciplina;
         $usuarios = DB::table('users')
             ->join('aluno_turmas', 'aluno_turmas.id_user', '=', 'users.id')
             ->where('id_turma', $id)
             ->select('*')
             ->get();
-
-        $avaliacoes = Avaliacao::where('id_turma' , $id)->get();
 
             return view('site.home.listar-turma-alunos', compact('usuarios','classroom', 'professor','nomeDisciplina', 'id'));
     }

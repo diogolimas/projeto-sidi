@@ -48,7 +48,7 @@ class AvaliacaoController extends Controller
 
             foreach ($alunos as $aluno){
                 Aluno_avaliacao::insert([
-                    'id_aluno'      => $aluno->id,
+                    'id_aluno'      => $aluno->id_user,
                     'id_avaliacao'  => $avaliacao->id,
                 ]);
             }

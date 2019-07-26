@@ -116,6 +116,7 @@ class IndicadorController extends Controller
         $indicador->delete();
         return redirect()->route('', ['succes' => 'Indicador retirado!']);
     }
+
     public function atribuirNota(Request $request, $avaliacao){
         $atividade = Avaliacao::find($avaliacao);
         $indicadores = Indicador::where('id_avaliacao', $avaliacao)->get();
@@ -133,7 +134,7 @@ class IndicadorController extends Controller
                 $nota_avaliacao[$contador1] += $request->notas[$contador2];
                 $contador2 += 1;
             }
-            Aluno_avaliacao::where('id_aluno', $aluno->id)->where('id_avaliacao', $avaliacao)->update([
+            Aluno_avaliacao::where('id_aluno', $aluno->id_user)->where('id_avaliacao', $avaliacao)->update([
                 'nota_avaliacao' => $nota_avaliacao[$contador1]
             ]);
             $contador1 += 1;
@@ -145,6 +146,11 @@ class IndicadorController extends Controller
                 Aluno_indicador::where('id_aluno', $aluno->id_user)->where('id_indicador', $indicador->id)->update(['nota_indicador' => $request->notas[$contador]]);
                 $contador += 1;
             }
+        }
+
+        foreach ($alunos as $aluno){
+            $media = Aluno_avaliacao::where('id_aluno', $aluno->id_user)->avg('nota_avaliacao');
+            Aluno_turma::where('id_user', $aluno->id_user)->update(['nota_turma' => $media]);
         }
 
         return redirect(route('turma/verAvaliacao', ['id' => $avaliacao]));

@@ -77,7 +77,7 @@
                         {{$usuario->quantidade_disciplinas_cursando}}
                     </td>
                     <td>
-{{--                        {{nota}}--}}
+                        {{$usuario->nota_turma}}
                     </td>
                 </tr>
             @endforeach
