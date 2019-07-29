@@ -53,6 +53,11 @@ class AvaliacaoController extends Controller
                 ]);
             }
 
+            foreach ($alunos as $aluno){
+                $media = Aluno_avaliacao::where('id_aluno', $aluno->id_user)->avg('nota_avaliacao');
+                Aluno_turma::where('id_user', $aluno->id_user)->update(['nota_turma' => $media]);
+            }
+
             return redirect('avaliacoes/' . $request->input('id') );
         }
     }
