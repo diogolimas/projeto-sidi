@@ -4,6 +4,13 @@
 /storage/*.key
 /vendor
 .env
+
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/php.xml
+.idea/projeto-sidi.iml
+
+
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
