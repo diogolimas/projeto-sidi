@@ -89,7 +89,8 @@ class AvaliacaoController extends Controller
 
     public function edit($id)
     {
-        //
+        $avaliacao = Avaliacao::find($id);
+
     }
 
     public function update(Request $request, $id)
@@ -97,8 +98,21 @@ class AvaliacaoController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function destroy($id, $turma)
     {
-        //
+        dd($id, $turma);
+        $avaliacao = Avaliacao::find($id);
+
+        $deletar = $avaliacao->delete();
+
+
+
+        if($deletar){
+            $success = "Avaliação removida com sucesso";
+            return view ('site.avaliacao.index', compact('success','turma'));
+        }else{
+            $error = "Avaliação removida com sucesso";
+            return view ('site.avaliacao.index', compact('error','turma'));
+        }
     }
 }

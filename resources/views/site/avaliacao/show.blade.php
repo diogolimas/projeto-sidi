@@ -106,7 +106,7 @@
                                         @endif
                                     @endforeach
 
-                                    @if(empty($nota_avaliacao ))
+                                    @if($nota_avaliacao )
 
                                         <td><label for="">{{$nota_avaliacao[$aluno_index]->nota_avaliacao }}</label></td>
                                     @else
