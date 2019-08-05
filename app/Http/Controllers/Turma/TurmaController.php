@@ -10,7 +10,9 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Papel;
 use App\Models\Aluno_turma;
+use App\Models\Aluno_indicador;
 use App\Models\Avaliacao;
+use App\Models\Indicador;
 
 use App\Models\Turma;
 
@@ -23,11 +25,11 @@ class TurmaController extends Controller
      */
     public function index()
     {
-        
+
         $usersthis = User::where('criador_id', auth()->user()->id)->get();
 
         return view('site.home.cadastrarTurma', compact('usersthis'));
-        
+
 
     }
 
@@ -74,7 +76,7 @@ class TurmaController extends Controller
             $dataForm = $request->all();
             return view('site.home.listarTurmas', compact('success', 'dados', 'turmas', 'dataForm'));
               */
-              return redirect()->route('turmas/listar', ['success' => 'Turma inserida com sucesso!']);  
+              return redirect()->route('turmas/listar', ['success' => 'Turma inserida com sucesso!']);
         }else{
             $error = 'Turma não inserida';
             $turmas = Turma::where('professor_id', auth()->user()->id)->paginate(7);
@@ -98,7 +100,7 @@ class TurmaController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**
@@ -116,7 +118,7 @@ class TurmaController extends Controller
             ->paginate(6);
         $dataForm = $request->all();
         $success = $request->success;
-        
+
         return view('site.home.listarTurmas', compact('dados', 'turmas','dataForm','success'));
     }
 
@@ -173,6 +175,7 @@ class TurmaController extends Controller
      */
     public function update(FormCadastroTurmas $request, $id)
     {
+        $avaliacoes = Avaliacao::where('id_turma', $id)->get();
         $turmas = Aluno_turma::where('id_turma', $id)->get();
         foreach ($turmas as $turma) {
             $usuario = User::find($turma->id_user);
@@ -181,7 +184,7 @@ class TurmaController extends Controller
             $turma->delete();
         }
         $cat = Turma::find($id);
-       
+
         if(isset($cat)) {
             $cat->disciplina = $request->input('disciplina');
 
@@ -198,13 +201,40 @@ class TurmaController extends Controller
                     'id_turma'  => $id,
                     'id_user'   => $user
                 ]);
+
+                //Verificando se existe nota avaliação e nota indicador e adicionando se não existir
+                foreach ($avaliacoes as $ava) {
+                  $indicadores = Indicador::where('id_avaliacao', $ava->id)->get();
+                  $gambiarra = 0;
+                  $existe = Aluno_avaliacao::where('id_aluno', $user)->where('id_avaliacao', $ava->id)->get();
+                  foreach ($existe as $exe) {
+                      $gambiarra = 1;
+                    }
+                  if($gambiarra == 0){
+                    Aluno_avaliacao::insert([
+                        'id_aluno'      => $user,
+                        'id_avaliacao'  => $ava->id,
+                    ]);
+
+                    foreach ($indicadores as $indicador) {
+                      Aluno_indicador::insert([
+                          'id_aluno'       => $user,
+                          'id_indicador'   => $indicador->id,
+                          'nota_indicador' => 0
+                      ]);
+                    }
+                  }
+                }
+
+                $media = Aluno_avaliacao::where('id_aluno', $user)->avg('nota_avaliacao');
+                Aluno_turma::where('id_user', $user)->update(['nota_turma' => $media]);
             }
         }
 
         return redirect ('/turmas-listar');
-        
+
     }
-    
+
 
     /**
      * Remove the specified resource from storage.
@@ -234,6 +264,11 @@ class TurmaController extends Controller
             ->where('id_turma', $id)
             ->select('*')
             ->get();
+
+        foreach ($usuarios as $aluno){
+            $media = Aluno_avaliacao::where('id_aluno', $aluno->id_user)->avg('nota_avaliacao');
+            Aluno_turma::where('id_user', $aluno->id_user)->update(['nota_turma' => $media]);
+        }
 
             return view('site.home.listar-turma-alunos', compact('usuarios','classroom', 'professor','nomeDisciplina', 'id'));
     }

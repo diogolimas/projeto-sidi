@@ -80,8 +80,8 @@
                                 @foreach($indicadores1 as $indicador1)
                                     <th>{{$indicador1->descricao_indicador}} (0 - {{$indicador1->nota_maxima}})</th>
                                 @endforeach
-                                
-                                <th>Nota final</th>
+
+                                <th>Nota Na Atividade</th>
                             </tr>
                         </thead>
                             <tbody>
@@ -164,4 +164,3 @@
 
 
 @stop
-

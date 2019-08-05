@@ -21,7 +21,7 @@ class CreateAlunoTurmasTable extends Migration
             $table->foreign('id_turma')->references('id')->on('turmas')->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
 
-            $table->float('nota_turma')->default(0);
+            $table->float('nota_turma')->nullable()->default(0);
         });
     }
 
