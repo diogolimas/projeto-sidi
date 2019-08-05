@@ -23,28 +23,28 @@
 
 @section('content')
 
-    <div class="ui">
-
-        <div class="ui top attached tabular menu">
+        <div class="ui">
+            <div class="ui top attached tabular menu">
             <a class="item active" data-tab="first">Descrição</a>
             <a class="item" data-tab="second">Indicadores</a>
             <a class="item" data-tab="third">Notas</a>
         </div>
 
+        <!--aqui fica o título-->
         <div class="ui bottom attached tab segment active" data-tab="first">
             <p>
                 {{ $avaliacao->descricao }}
             </p>
         </div>
+        <!--fim do título-->
+        <!--Início das divisões-->
         <div class="ui bottom attached tab segment" data-tab="second">
-
-
-
-
             <a class="ui inverted green button text-black"
             href="{{route('indicador/registrar', ['avaliacao' => $avaliacao->id])}}">Registrar indicador
             </a>
-            <div>
+        <div>
+
+            <!--tabela de listagem de indicadores-->
                 <table class="ui celled striped table mt-3">
                     <thead>
                     <tr>
@@ -69,10 +69,12 @@
                         @endforeach
                     </tbody>
                 </table>
+            <!--fim da listagem de indicadores-->
             </div>
         </div>
-        <!--NOTAS -->
+        <!-- Listagem das notas por aluno -->
         <div class="ui bottom attached tab segment " data-tab="third">
+            <!--listagem de notas por indicador-->
                 <table class="ui celled striped table mt-3">
                         <thead>
                             <tr>
@@ -80,7 +82,6 @@
                                 @foreach($indicadores1 as $indicador1)
                                     <th>{{$indicador1->descricao_indicador}} (0 - {{$indicador1->nota_maxima}})</th>
                                 @endforeach
-                                
                                 <th>Nota final</th>
                             </tr>
                         </thead>
@@ -103,8 +104,9 @@
                                         @endif
                                     @endforeach
 
-                                    @if(isset($nota_avaliacao))
-                                        <td><label for="">{{$nota_avaliacao[$aluno_index]->nota_avaliacao}}</label></td>
+                                    @if(empty($nota_avaliacao ))
+
+                                        <td><label for="">{{$nota_avaliacao[$aluno_index]->nota_avaliacao }}</label></td>
                                     @else
                                         <td><label for="">0</label></td>
                                     @endif

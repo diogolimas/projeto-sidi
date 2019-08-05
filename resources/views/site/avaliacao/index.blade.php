@@ -20,17 +20,38 @@
     </div>
 
     <div class="mt-3">
-        @if( count($avaliacoes) )
-                @foreach($avaliacoes as $av)
 
-                    <a href="{{ route('turma/verAvaliacao', ['id'=>$av->id])  }}">
-                        <div class="ui segment mt-3">
-                            <h2>{{ $av->nome }}</h2>
-                            <div class="ui divider"></div>
-                            {{ $av->descricao }}
-                        </div>
-                    </a>
-                @endforeach
+        @if(count($avaliacoes) )
+
+                    <table class="ui green table">
+                        <thead>
+                            <tr>
+                                <th width="150px">Avaliação</th>
+                                <th>Descrição</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($avaliacoes as $av)
+                            <tr>
+                                <td >{{$av->nome}}</td>
+                                <td width="1000px">{{$av->descricao}}</td>
+                                <td>
+
+                                    <a style="width: 50px;"
+                                       class="ui inverted yellow button" href="">
+                                        <i class="edit icon "></i>
+                                    </a>
+                                    <a style="width: 50px;"
+                                        class="ui inverted red button" href="">
+                                        <i class="trash alternate outline icon"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        @endforeach
+                    </table>
+
         @else
             <div class="ui segment">
                 <p>Nenhuma avaliação foi dada para esta turma</p>

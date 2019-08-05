@@ -77,6 +77,7 @@ class AvaliacaoController extends Controller
 
         $nota_avaliacao = Aluno_avaliacao::where('id_avaliacao', $id)->get();
 
+
         $alunos = DB::table('users')
             ->join('aluno_turmas', 'users.id', '=', 'aluno_turmas.id_user')
             ->where('id_turma', $avaliacao->id_turma)
