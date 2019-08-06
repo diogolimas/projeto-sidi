@@ -22,7 +22,7 @@
                 <div class="ten wide column">
                     <div class="d-block mb-4">
                         <h2 class="ui header ">
-                            <a href="{{route('turma/avaliacoes', ['turma' => $turma->id])}}">
+                            <a href="{{route('turma/verAvaliacao', ['avaliacao' => $atividade->id])}}">
                                 <i class="arrow left icon black"></i>
                             </a>
                         <!-- {{$titulo_page ?? 'Registrar nova turma'}} -->
