@@ -36,10 +36,12 @@ Route::group( ['middleware' => 'auth'], function(){
     Route::post('/usuario/update/','registroController@update')->name('efetuar-edit');
 
     //rotas das avaliacoes
-    Route::get('avaliacoes/{turma}/', 'AvaliacaoController@index')->name('turma/avaliacoes'); 
+    Route::get('avaliacoes/{turma}/', 'AvaliacaoController@index')->name('turma/avaliacoes');
     Route::get('avaliacoes/cadastrar/{turma}/', 'AvaliacaoController@create')->name('turma/cadastrarAvaliacao');
     Route::post('avaliacoes/salvar/', 'AvaliacaoController@store')->name('turma/salvarAvaliacao');
     Route::get('avaliacoes/{avaliacao}/descricao', 'AvaliacaoController@show')->name('turma/verAvaliacao');
+    Route::get('{turma}/avaliacoes/{avaliacao}/edit','AvaliacaoController@edit')->name('turma/editAvaliacao');
+    Route::get('{turma}/avaliacoes/{avaliacao}/delete','AvaliacaoController@destroy')->name('turma/deleteAvaliacao');
 
     //rotas dos indicadores
     Route::get('indicador/registrar/{avaliacao}/', 'IndicadorController@create')->name('indicador/registrar');

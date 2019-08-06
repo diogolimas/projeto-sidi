@@ -18,8 +18,6 @@
         </div>
     @endif
 
-
-
         <table class="ui celled striped table">
             <thead>
             <tr>
